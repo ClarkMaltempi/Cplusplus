@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1630421403 source:c:\users\chmfa\downloads\projetos em c\teste2\teste\main.cpp
+	<iostream>
+	"Est_Teatro.h"
+
+1630421387 c:\users\chmfa\downloads\projetos em c\teste2\teste\est_teatro.h
+
+1630444733 source:c:\users\tr032030\downloads\teste\main.cpp
+	<iostream>
+	"Est_Teatro.h"
+
+1630444823 c:\users\tr032030\downloads\teste\est_teatro.h
+
+1630447418 source:c:\users\tr032030\downloads\teatro_\main.cpp
+	<iostream>
+	"Est_Teatro.h"
+
+1630447415 c:\users\tr032030\downloads\teatro_\est_teatro.h
+
