@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1641338388 source:c:\users\tr032030\downloads\projetos em c\projetos em c\imp\main.cpp
+	<iostream>
+	<fstream>
+	<iostream>
+	<cstdlib>
+	<string>
+	<vector>
+	<locale.h>
+	<algorithm>
+	<ctime>
+
