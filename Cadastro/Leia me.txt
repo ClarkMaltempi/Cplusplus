@@ -1,1 +1,2 @@
 
+Esse programa em desenvolvimento visa elaborar uma aplicação para cadastro de dispositivos (inicialmente configurado para cadastrar impressoras) em um programa com a estrutura de console aplication utilizando como base de dados para armazenamento das informações um arquivo .txt.
