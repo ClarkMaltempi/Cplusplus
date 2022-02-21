@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1645105614 source:c:\users\adm\downloads\projetos cpp\teatrocpp\main.cpp
+	<iostream>
+	"estTeatro.h"
+	<locale.h>
+
+1645113566 c:\users\adm\downloads\projetos cpp\teatrocpp\estteatro.h
+	<vector>
+
+1645105614 source:c:\users\adm\downloads\projetos cpp\teatrocpp_v2\main.cpp
+	<iostream>
+	"estTeatro.h"
+	<locale.h>
+
+1645113566 c:\users\adm\downloads\projetos cpp\teatrocpp_v2\estteatro.h
+	<vector>
+
