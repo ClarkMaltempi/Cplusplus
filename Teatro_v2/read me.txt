@@ -1,1 +1,2 @@
 
+This project consists of the application of abstraction concepts
