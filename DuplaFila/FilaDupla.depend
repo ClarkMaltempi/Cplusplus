@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1649858644 source:c:\users\adm\downloads\projetos cpp\filadupla\main.cpp
+	<iostream>
+	<deque>
+	"fila.h"
+
+1649857814 c:\users\adm\downloads\projetos cpp\filadupla\fila.h
+	<deque>
+
