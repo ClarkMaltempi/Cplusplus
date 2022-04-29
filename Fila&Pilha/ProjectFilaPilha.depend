@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1651014413 source:c:\users\adm\downloads\projetos cpp\projectfilapilha\main.cpp
+	<iostream>
+	"Pilha.h"
+	"Fila.h"
+	"Order.h"
+
+1650465974 c:\users\adm\downloads\projetos cpp\projectfilapilha\pilha.h
+
+1650466433 c:\users\adm\downloads\projetos cpp\projectfilapilha\fila.h
+
+1650895881 c:\users\adm\downloads\projetos cpp\projectfilapilha\order.h
+
