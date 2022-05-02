@@ -1317,7 +1317,40 @@ int main(){
 		cout<<*it<<endl;
 	}
 	
+	register int cont; //Armazenar em um registrador e não na memória, variaveis que precisam ser acessada rapidamente-contador
+	for(cont=0;cont<=10;cont++){
+		//exemplo
+	}
 	
+	//Ele retornará 1 dessa maneira conforme está declarada***Static Armazena a variavel na memória e usa o mesmo endereço
+	void somador(){
+		int i=0;
+		i++;
+		cout<<i<<endl;
+	}
+
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+
+
+	void somador(){
+		static auto i=0;
+		i++;
+		cout<<i<<endl;
+	}
+
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
 	
 	return 0;
 }
