@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1651509927 source:c:\users\adm\downloads\projetos cpp\analiseexpressoes\main.cpp
+	<iostream>
+	"expres.h"
+	<locale.h>
+	<cstring>
+
+1651509567 c:\users\adm\downloads\projetos cpp\analiseexpressoes\expres.h
+	<vector>
+
