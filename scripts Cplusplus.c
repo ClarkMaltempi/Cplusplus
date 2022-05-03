@@ -1634,6 +1634,41 @@ cout<<"Velocidade"<<c2->getVel()<<endl;
 
 
 
+////////////////////Foreach*************************************************************************/////////////////////////////// C++11
+
+//Uma função que recebe 3 parametros, posição inicial do container(vector), posição final, função qe opera os elementos
+
+#include <vector>
+#include <algorithm>
+
+vector<int>n{0,1,2,3,4,5,6,7,8,9};
+
+//for em intereitor e intervalo
+
+vector<int>::iterator it;
+
+for(auto it=n.begin();it!=n.end();it++){
+	cout<<*it<<endl;
+}
+
+for(it:n){
+	cout<<it<<endl;
+}
+//***************************
+//foreach junto com a função lambda, for(pontoinicial,pontofinal, função lambda o que vai fazer com esses valores)
+
+vector<int>n{0,1,2,3,4,5,6,7,8,9};
+
+for_each(n.begin(),n.end(),[](int num){
+
+	cout<< num <<endl;
+});
+
+for_each(n.begin(),n.end(),[](int num){//Importante não altera o valor do vector
+	num+=10;
+	cout<< num <<endl;
+});
+
 
 
 
