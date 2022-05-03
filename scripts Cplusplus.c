@@ -1543,7 +1543,89 @@ prod.erase(prod.find(0), prod.find(2));
 
 
 
+/////////////////////PONTEIROS INTELIGENTES***********************************************************smart points
+//Asseguram a exclusão do objeto, a memória é liberada para atualização
 
+//Ponteiros
+
+//revisão
+int *pnum;
+int num;
+
+num=10;
+pnum=&num;
+
+cout<<*pnum<< "-"<<pnum<<endl;
+
+delete pnum;
+
+//***************************
+
+int *pnum=new int();
+
+*pnum=10;
+
+cout<<*pnum<< "-"<<pnum<<endl;
+
+delete pnum;
+
+
+//***************************Smart
+#include <memory>
+
+unique_ptr<int>pnum(new int());
+
+*pnum=10;
+
+cout<<*pnum<< "-"<<&pnum<<endl;
+
+//Ponteiro compartilhado
+
+shared_ptr<int>pnum(new int());
+shared_ptr<int>pnum2=pnum);
+
+//String ponteiro tradicional e smart
+
+string* str=new string("Cursos");
+cout<<*str<< "-tamanho"<<str->size()<<endl;
+delete str;
+
+unique_ptr<string>str(new string("Cursos"));
+cout<<*str<< "-tamanho"<<str->size()<<endl;
+
+//Classes
+
+class Carro{
+	
+	public:
+	int vel=0;
+	int getVel(){
+		return vel;
+	}
+	void setVel(int v){
+		this->vel=v;
+	}
+	
+};
+
+//tradicional
+Carro *c1=new Carro();
+
+cout<<"Velocidade"<<c1->getVel()<<endl;
+delete c1;
+
+//Com Smart
+
+unique_ptr<Carro>c1(new Carro);
+cout<<"Velocidade"<<c1->getVel()<<endl;
+
+//Shared Smart
+shared_ptr<Carro>c1(new Carro);
+shared_ptr<Carro>c2=c1;
+c1->setVel(10);
+c2->setVel(5);
+cout<<"Velocidade"<<c1->getVel()<<endl;//ele terá o mesmo valor alterando em todos por que está compartilhando o ponteiro
+cout<<"Velocidade"<<c2->getVel()<<endl;
 
 
 
