@@ -1354,6 +1354,33 @@ int main(){
 	
 	return 0;
 }
+      
+ ////LOOP FOR ******************************************************************************************************** C 11 // Elementos inteiros
+
+//string mome="Bruno";
+const char* nome="Bruno";//Declaração do string moderno c++ não se aplica
+
+int x[10]{0,1,2,3,4,5,6,7,8,9};
+vector<int> n{1,2,3,4,5};
+
+for(auto i:n){
+	cout<<i<<endl;
+}
+
+//tradicional
+for(int i=0;i<=10;i++){
+	cout<<x[i]<<endl;
+}
+
+for(int i=0; i<=sizeof(nome);i++){
+	cout<<nome[i]<<endl;
+	
+}
+
+//for com base em intervalo // ou for range declaration
+for(int i:x){//cria uma variavel e passa a coleção
+	cout<< i <<endl;
+}
 
 
 
