@@ -1475,6 +1475,69 @@ for(auto i:prod){
 }
 
 
+//Container Map******************************************************************************************************
+#include <map>
+
+
+map<int, string>prod;//sem precisar de associação numero de elementos por exemplo
+
+//Outro exemplo de declaração
+//map<char,string>prod;
+//prod['a']="Mouse";
+
+//chave[0] X Valor
+prod[0]="mouse";
+prod[1]="teclado";
+prod[2]="Monitor";
+
+for(int i=0;i<3;i++){
+	cout<<prod[i]<<endl;
+}
+
+//Interator criar o inteirator
+
+for(auto it=prod.begin();it!=prod.end();i++){
+	cout<<it->first<<endl;//imprimir a chave
+	cout<<it->second<<endl;//imprimir o valor
+}
+
+for(auto it:prod){
+	cout<<it.first<<endl;
+}
+
+// Inserção usando o insert
+
+prod.insert(pair<int,string>(0,"Mouse"));//informar um pair exigencia do insert
+prod.insert(pair<int,string>(1,"Teclado"));
+prod.insert(pair<int,string>(2,"Monitor"));
+
+for(auto it:prod){
+	cout<<it.first<<" - "<<it.second<<endl;
+}
+
+//Deletar o elemento - Esse valor não é o elemento da posição 2, ele é a chave, se alterar o valor para 10 ele não vai encontrar
+
+prod.erase(2);
+
+//Deletar tudo
+prod.clear();
+
+//Procura uma chave - criando um iterator para map
+map<int, string>::iterator itmap;
+
+itmap=prod.find(2);
+
+if(itmap==prod.end()){
+	cout<<"Produto nao encontrado"<<endl;
+}else{
+	cout<<"Produto em estoque"<<endl;
+	cout<<"Codigo: "<<itmap->first<<"Produto: "<<itmap->second<<endl;
+}
+
+//Deletar uma faixa de elemntos
+prod.erase(prod.begin(), prod.find(1));//Pegando do inicio begin
+prod.erase(prod.find(0), prod.find(2)); 
+
 
 
 
