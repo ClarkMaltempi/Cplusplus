@@ -1384,6 +1384,95 @@ for(int i:x){//cria uma variavel e passa a coleção
 
 
 
+///extern*************************************************************************************C11 //Acessar uma variável em outro arquivo externo
+//criar um outro arquivo .cpp na mesma pasta para realizar o teste
+
+
+//auxiliar
+using namespace std;
+extern int num;
+
+void impNum(){
+	cout<<num<<endl;
+}
+
+
+
+//main
+void impNum();
+int num {10};
+
+int main(){
+	impNum();
+	
+	
+	return 0;
+}
+
+//Conteiner Pair -- Par de Dados <int><string> ou <int><class> ou <int><int>**************************************************************
+//Semelhante ao vector armazena 1 elemento
+#include <utility>
+
+pair <int,string> par(10,"Bruno");//inicialização direta
+cout<<par.first << "-" <<par.second <<endl;
+
+//Adicionando valores
+pair <int,string> par;
+par.first=100;
+par.second="Bruno";
+
+//formato de Vetor
+const int tam=3;
+pair <int,string> par[tam];
+
+par[0].first=100;
+par[0].second="Bruno";
+
+par[1].first=200;
+par[1].second="nome";
+
+par[2].first=300;
+par[2].second="nome2";
+
+
+cout<<par[0].first << "-" <<par[0].second <<endl;
+
+//Outra maneira
+
+par[0]=make_pair(10,"Bruno");
+par[1]=make_pair(200,"nome");
+par[2]=make_pair(300,"nome2");
+
+for(int i=0;i<tam;i++){
+	cout<<par[i].first << "-" <<par[i].second <<endl;	
+}
+
+
+//Pair com três dados
+pair<int,par<string,double>>par[tam];
+par[0]=make_pair(10,make_pair("mouse",10.55));
+par[1]=make_pair(20,make_pair("teclado",50.55));
+par[2]=make_pair(30,make_pair("monitor",1210.55));
+
+for(int i=0;i<tam;i++){
+	cout<<par[i].first << "-" <<par[i].second.first<<" - "<<par[i].second.second <<endl;	
+}
+
+//utilizando vector
+#include <vector>
+
+vector<pair<int,string>>prod;
+
+prod.push_back(make_pair(10,"mouse"));
+prod.push_back(make_pair(20,"teclado"));
+
+for(int i=0;i<prod.size();i++){
+	cout<<prod[i].first << "-" <<prod[i].second <<endl;	
+}
+
+for(auto i:prod){
+	cout<<i.first << "-" <<i.second <<endl;	
+}
 
 
 
