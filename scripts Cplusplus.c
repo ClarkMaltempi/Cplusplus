@@ -1668,7 +1668,65 @@ for_each(n.begin(),n.end(),[](int num){//Importante não altera o valor do vecto
 	num+=10;
 	cout<< num <<endl;
 });
+	
 
+
+
+	
+//POO --
+
+class Carro{
+	
+	public:
+	
+		int velMax;
+		int potencia;
+		const char* nome;
+		
+		Carro(const char* n, int p){
+			this->nome=n;
+			this->potencia=p;
+			if(p<100){
+				this->velMax = 120;
+			}else if(p<200){
+				this->velMax=220;
+			}
+		}//Método Construtor
+};
+
+//main
+
+//instanciando a classe
+Carro *c1=new Carro("Bruno", 300);
+cout<<c1->nome<< " - " <<c1->potencia <<" - " << c1->velMax << endl;
+
+delete c1;
+
+//Lista de inicialização com o new usamos a seta
+
+Carro(const char* n, int p):nome(n), potencia(p){
+	
+			if(p<100){
+				this->velMax = 120;
+			}else if(p<200){
+				this->velMax=220;
+			}
+		}//Método Construtor
+
+
+
+//main
+
+Carro c1{"Bruno", 70};
+cout<<c1.nome<< " - " <<c1.potencia <<" - " << c1.velMax << endl;
+
+//usar um smart point inteligente
+#include <memory>
+
+//main
+
+unique_ptr<Carro>c1(new Carro{"Bruno", 70});
+cout<<c1->nome<< " - " <<c1->potencia <<" - " << c1->velMax << endl;
 
 
 
