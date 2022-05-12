@@ -1732,3 +1732,132 @@ cout<<c1->nome<< " - " <<c1->potencia <<" - " << c1->velMax << endl;
 
 
 
+	
+var query = from element in root.Elements
+where (string)element.Attribute ("atr") == "search" 
+select element;
+
+
+
+//Criar um arquivo XML*************************************************************************************************************************
+
+using System;  
+using System.IO;  
+using System.Xml;  
+
+
+public class Sample  
+{  
+    public static void Main()  
+    {  
+        // Create the XmlDocument.  
+        XmlDocument doc = new XmlDocument();  
+        doc.LoadXml("<book genre='novel' ISBN='1-861001-57-5'>" +  
+                   "<title>Pride And Prejudice</title>" +  
+                  "</book>");  
+ 
+        // Save the document to a file.  
+        doc.Save("data_.xml"); 
+
+        
+    }  
+}  
+
+//XML************************************************************************************************************************************
+
+using System;  
+using System.IO;  
+using System.Xml;  
+
+
+public class Sample  
+{  
+    public static void Main()  
+    {  
+        int i=0;
+        //List<string> InfoArq = new List<string>();
+        string[] arquivos = Directory.GetFiles(@"C:\Users\adm\Documents\Docs_XML\", "*.xml");
+
+        
+        while (i == arquivos.Length)
+        {
+            
+           
+        // Create the XmlDocument.
+          
+        XmlDocument doc = new XmlDocument();  
+        
+        doc.Load(@"C:\Users\adm\Documents\Docs_XML\data.xml");
+        string CaminhodoArquivo = @"C:\Users\adm\Documents\Docs_XML\data.xml";
+
+
+
+        //Ler o arquivo XML
+        XmlTextReader xmlReader = new XmlTextReader(CaminhodoArquivo);
+
+        while (xmlReader.Read())
+        {
+            switch (xmlReader.NodeType)
+            {
+                case XmlNodeType.Element:
+                    Console.WriteLine("<" + xmlReader.Name + ">");
+                    Console.WriteLine("<" + xmlReader.Name + ">"+Environment.NewLine);
+                    break;
+                case XmlNodeType.Text:
+                    Console.WriteLine(xmlReader.Value);
+                    Console.WriteLine(xmlReader.Value+ Environment.NewLine);
+                    break;
+                case XmlNodeType.EndElement:
+                    Console.WriteLine("<" + xmlReader.Name + ">");
+                    Console.WriteLine("<" + xmlReader.Name + ">" + Environment.NewLine);
+                    break;
+            }
+        }
+    
+        // Save the document to a file.  
+        doc.Save(@"C:\Users\adm\Documents\Docs_XML\data\data_.xml"); 
+        
+        i++;
+
+        }
+    }  
+
+}
+
+//xml reader*******************************************************************************************************************************
+
+using System;  
+using System.IO;  
+using System.Xml;  
+
+
+public class Sample  
+{  
+    public static void Main()  
+    {  
+        
+        string URLString = @"C:\Users\adm\Documents\doc\data\Produtos.xml";
+
+        XmlTextReader reader = new XmlTextReader (URLString);
+
+        while (reader.Read())
+        {
+            switch (reader.NodeType)
+            {
+                case XmlNodeType.Element: // The node is an element.
+                    Console.Write("<" + reader.Name);
+                    Console.WriteLine(">");
+                    break;
+
+                case XmlNodeType.Text: //Display the text in each element.
+                    Console.WriteLine (reader.Value);
+                    break;
+
+                case XmlNodeType. EndElement: //Display the end of the element.
+                    Console.Write("</" + reader.Name);
+                    Console.WriteLine(">");
+                    break;
+            }
+        }
+    }  
+}  
