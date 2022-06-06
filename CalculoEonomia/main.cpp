@@ -27,13 +27,16 @@ int main()
         cout<<"Calculo Individual..."<<endl;
         cout << endl;
         cout << "[1] Calculo Valor Futuro (Simples)" << endl;
+        cout << "[2] Calculo Valor Futuro do Investimento -M- (Simples)" << endl;
+        cout << "[3] Calculo Valor Futuro do Retorno -VF- (Simples)" << endl;
+        cout << "[4] Custo BenefÃ­cio" << endl;
         cout << endl;
 
         cout<<"---------------------------------------------"<<endl;
         cout<<"Calculo Completo..."<<endl;
         cout << endl;
-        cout << "[2] Calculo de Projeto {Val Futuro}, Investimento, Custo/Benefício e tempo" << endl;
-        cout << "[3] Calculo de Projeto {Val Presente}, Investimento, Custo/Benefício" << endl;
+        cout << "[5] Calculo de Projeto {Val Futuro}, Investimento, Custo/BenefÃ­cio e tempo" << endl;
+        cout << "[6] Calculo de Projeto {Val Presente}, Investimento, Custo/BenefÃ­cio" << endl;
         cout << "[0] SAIR" << endl;
         cout<<endl;
         cin>>opc;
@@ -43,7 +46,7 @@ int main()
 
     case 1:
 
-       cout<<" VF = P*[ ( 1 + R )n – 1 ]"<<endl;
+       cout<<" VF = P*[ ( 1 + R )n â€“ 1 ]"<<endl;
        cout<<"--------------------------"<<endl;
        cout<<"             R            "<<endl;
        cout<<endl;
@@ -64,7 +67,7 @@ int main()
 
         cout<<"Como ficou a formula"<<endl;
         cout<<endl;
-        cout<<" VF ="<<valor<<"*"<<"[ ( 1 +"<< percent <<" )^"<<n<< "– 1 ]"<<endl;
+        cout<<" VF ="<<valor<<"*"<<"[ ( 1 +"<< percent <<" )^"<<n<< "â€“ 1 ]"<<endl;
        cout<<"--------------------------"<<endl;
        cout<<"             "<<percent<<"            "<<endl;
        cout<<endl;
@@ -84,8 +87,106 @@ int main()
         system("pause");
         break;
 
-
         case 2:
+
+        cout<<"-------------------------------------------------"<<endl;
+        cout<<"CÃ¡lculo do Valor Futuro do Investimento Fixo  "<<endl;
+        cout<<"-------------------------------------------------"<<endl;
+        cout<<endl;
+        cout<<endl;
+
+        cout<<"Digite o valor -P- (Reultado de Calculo RF) Anual Investido! "<<endl;
+        cout<<"Digite: ";
+        cin>>valor;
+
+        cout<<"Digite o Percentual (valor inteiro)"<<endl;
+        cout<<"Digite: ";
+        cin>>percent;
+        percent = percent/100;
+
+        cout<<"Digite o Tempo de Investimento (Montante)"<<endl;
+        cout<<"Digite: ";
+        cin>>n;
+        cout<<endl;
+
+        M = pow(1+percent,n);
+        M = valor*M;
+        cout<<"M = "<<valor<<" x "<<" (1+"<<percent<<")^"<<n<<endl;
+
+        printf("M = %.9f",M);
+
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+        break;
+
+
+        case 3:
+
+        cout<<"-------------------------------------------------"<<endl;
+        cout<<"CÃ¡lculo do Valor Futuro do Retorno Fixo  "<<endl;
+        cout<<"-------------------------------------------------"<<endl;
+        cout<<endl;
+        cout<<endl;
+
+        cout<<"Digite o valor -P- (Parcela Retorno) Anual Investido! "<<endl;
+        cout<<"Digite: ";
+        cin>>valor;
+
+        cout<<"Digite o Percentual (valor inteiro)"<<endl;
+        cout<<"Digite: ";
+        cin>>percent;
+        percent = percent/100;
+
+        cout<<"Digite o Tempo de Investimento (Montante)"<<endl;
+        cout<<"Digite: ";
+        cin>>n;
+        cout<<endl;
+
+        cout<<"VF ="<<valor<<" x "<<"1 + "<<percent<<" )^ "<<n<<endl;
+        cout<<"--------------------------"<<endl;
+        cout<<"             "<<percent<<"            "<<endl;
+        cout<<endl;
+        ValRetorno = pow(1+percent,n)-1;
+
+        ValRetorno = ValRetorno/percent;
+
+        ValRetorno = ValRetorno * valor;
+
+        printf("VF = %.9f",ValRetorno);
+
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+        break;
+
+        case 4:
+
+        cout<<"-------------------------------------------------"<<endl;
+        cout<<"              CÃ¡lculo Custo BenefÃ­cio "<<endl;
+        cout<<"-------------------------------------------------"<<endl;
+        cout<<endl;
+        cout<<endl;
+
+        cout<<"Digite o valor -VF- de Retorno! "<<endl;
+        cout<<"Digite: ";
+        cin>>ValRetorno;
+
+        cout<<"Digite o valor de Investimento fixo -M- de Retorno! "<<endl;
+        cout<<"Digite: ";
+        cin>>valor;
+
+        CB = valor/ValRetorno;
+        cout<<"CB = "<<CB<<endl;
+
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+
+
+        break;
+
+        case 5:
         system("cls");
         cout<<"Digite o valor inicial Investido! "<<endl;
         cout<<"Digite: ";
@@ -108,7 +209,7 @@ int main()
         cout<<"Inicio do Projeto: "<<tempo<<" meses"<<endl;
         cout<<"Retorno do Investimento: "<<tempRetorno<<" meses"<<endl;
         cout<<"Tempo Total (Investimento + Retorno): "<<tempRetorno+tempo<<" meses"<<endl;
-        cout<<"Custo Benefício: "<<tempRetorno<<" meses"<<endl;
+        cout<<"Custo BenefÃ­cio: "<<tempRetorno<<" meses"<<endl;
         cout<<endl;
 
         while(i != tempRetorno+tempo){
@@ -133,13 +234,13 @@ int main()
         cout<<endl;
         cout<<endl;
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"Cálculo do Valor Futuro do Investimento em "<<tempo<<" meses"<<endl;
+        cout<<"CÃ¡lculo do Valor Futuro do Investimento em "<<tempo<<" meses"<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
         cout<<"Como ficou a formula"<<endl;
         cout<<endl;
-        cout<<" VF ="<<Parcela<<"*"<<"[ ( 1 +"<< percent <<" )^"<<tempo<< "– 1 ]"<<endl;
+        cout<<" VF ="<<Parcela<<"*"<<"[ ( 1 +"<< percent <<" )^"<<tempo<< "â€“ 1 ]"<<endl;
         cout<<"--------------------------"<<endl;
         cout<<"             "<<percent<<"            "<<endl;
         cout<<endl;
@@ -158,7 +259,7 @@ int main()
         cout<<endl;
         cout<<endl;
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"Cálculo do Valor Futuro do Investimento Fixo em "<<tempRetorno-tempo<<" meses"<<endl;
+        cout<<"CÃ¡lculo do Valor Futuro do Investimento Fixo em "<<tempRetorno-tempo<<" meses"<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
@@ -173,7 +274,7 @@ int main()
         cout<<endl;
 
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"Cálculo do Valor Futuro do Retorno Fixo em "<<tempRetorno-tempo<<" meses"<<endl;
+        cout<<"CÃ¡lculo do Valor Futuro do Retorno Fixo em "<<tempRetorno-tempo<<" meses"<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
@@ -194,7 +295,7 @@ int main()
         cout<<endl;
 
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"              Cálculo Custo Benefício "<<endl;
+        cout<<"              CÃ¡lculo Custo BenefÃ­cio "<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
@@ -207,12 +308,12 @@ int main()
         cout<<endl;
 
         cout<<"Deseja Calcular o Tempo Retorno Integral do Investimento ?"<<endl;
-        cout<<"SIM[1] OU NÃO [2]"<<endl;
+        cout<<"SIM[1] OU NÃƒO [2]"<<endl;
         cin>>opc;
 
         if(opc == 1){
             cout<<"-------------------------------------------------"<<endl;
-            cout<<"  Cálculo Tempo Retorno Integral do Investimento "<<endl;
+            cout<<"  CÃ¡lculo Tempo Retorno Integral do Investimento "<<endl;
             cout<<"-------------------------------------------------"<<endl;
             cout<<endl;
             cout<<endl;
@@ -232,7 +333,7 @@ int main()
         break;
 
 
-        case 3:
+        case 6:
 
         system("cls");
         cout<<"Digite o valor inicial Investido! "<<endl;
@@ -256,7 +357,7 @@ int main()
         cout<<"Inicio do Projeto: "<<tempo<<" meses"<<endl;
         cout<<"Retorno do Investimento: "<<tempRetorno<<" meses"<<endl;
         cout<<"Tempo Total (Investimento + Retorno): "<<tempRetorno+tempo<<" meses"<<endl;
-        cout<<"Custo Benefício: "<<tempRetorno<<" meses"<<endl;
+        cout<<"Custo BenefÃ­cio: "<<tempRetorno<<" meses"<<endl;
         cout<<endl;
 
         while(i != tempRetorno+tempo){
@@ -281,7 +382,7 @@ int main()
         cout<<endl;
         cout<<endl;
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"Cálculo do Valor Futuro do Investimento em "<<tempo<<" meses"<<endl;
+        cout<<"CÃ¡lculo do Valor Futuro do Investimento em "<<tempo<<" meses"<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
@@ -303,7 +404,7 @@ int main()
         cout<<endl;
         cout<<endl;
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"Cálculo Presente do Valor de Retorno Fixo em "<<tempRetorno<<" meses"<<endl;
+        cout<<"CÃ¡lculo Presente do Valor de Retorno Fixo em "<<tempRetorno<<" meses"<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
@@ -325,7 +426,7 @@ int main()
         cout<<endl;
 
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"Cálculo do Valor Presente do Retorno Fixo do Investimento "<<tempo<<" meses"<<endl;
+        cout<<"CÃ¡lculo do Valor Presente do Retorno Fixo do Investimento "<<tempo<<" meses"<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
@@ -342,7 +443,7 @@ int main()
         cout<<endl;
 
         cout<<"-------------------------------------------------"<<endl;
-        cout<<"              Cálculo Custo Benefício "<<endl;
+        cout<<"              CÃ¡lculo Custo BenefÃ­cio "<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<endl;
         cout<<endl;
@@ -361,7 +462,7 @@ int main()
 
         case 0:
         exit(0);
-        cout<<"Você optou por Sair!!!"<<endl;
+        cout<<"VocÃª optou por Sair!!!"<<endl;
         break;
 
         default:
