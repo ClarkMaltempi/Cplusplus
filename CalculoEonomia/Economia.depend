@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1654541844 source:c:\users\adm\documents\cpp\economia\main.cpp
+	<iostream>
+	<locale.h>
+	<math.h>
+
