@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1651622973 source:f:\0_fatec\4estrut_dados_ads\0ads_ed_2022\implementacao2022_1\pilha ligada\main.cpp
+	<iostream>
+	"pilhaligada.h"
+
+1651623072 f:\0_fatec\4estrut_dados_ads\0ads_ed_2022\implementacao2022_1\pilha ligada\pilhaligada.h
+	<iostream>
+
