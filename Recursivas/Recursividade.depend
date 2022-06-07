@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1654614308 source:c:\users\adm\documents\cpp\recursividade\main.cpp
+	<iostream>
+	"Rec.h"
+	<vector>
+	<math.h>
+
+1654607751 c:\users\adm\documents\cpp\recursividade\rec.h
+	<vector>
+	<string.h>
+
