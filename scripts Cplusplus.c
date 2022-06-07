@@ -1861,3 +1861,39 @@ public class Sample
         }
     }  
 }  
+					       
+					       
+					       
+					       
+//Contar numero de Dígitos
+			
+#include <iostream>
+#include <vector>
+#include <string>
+
+using std::cout; using std::cerr;
+using std::endl; using std::string;
+using std::to_string;
+
+template<typename T>
+size_t countDigits(T n)
+{
+    string tmp;
+
+    tmp = to_string(n);
+    return tmp.size();
+}
+
+int main() {
+    int num1 = 1234567;
+    int num2 = -1234567;
+
+    cout << "number of digits in " << num1 << " = " << countDigits(num1) << endl;
+    cout << "number of digits in " << num2 << " = " << countDigits(num2) << endl;
+
+    exit(EXIT_SUCCESS);
+}					       
+					       
+					       
+					       
+					       
