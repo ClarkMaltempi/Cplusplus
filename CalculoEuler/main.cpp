@@ -37,3 +37,28 @@ e = 2.7182818285
 porque a precisão do tipo double é de 10 casas decimais.
 Lembrando que o número de euler é um número irracional .
 */
+
+
+
+//*********************************************************************************************
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+  
+// function to explain use of exp() function
+double application(double x)
+{
+    double result = exp(x);
+    cout << "exp(x) = " << result << endl;
+    return result;
+}
+  
+
+
+
+
+
+
+
