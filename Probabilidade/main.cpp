@@ -2,6 +2,7 @@
 #include <locale.h>
 #define pt_br setlocale(LC_ALL, "Portuguese");
 #include <math.h>
+#include <vector>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ void cabecalho(){
     cout<<endl;
     cout << "----------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
     cout << "                                                          " << endl;
-    cout << "                                                                         ESTATÍSTICA                          " << endl;
+    cout << "                                                                         ESTATÃSTICA                          " << endl;
     cout << "                                                          " << endl;
     cout << "----------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
     cout<<endl;
@@ -46,21 +47,23 @@ int main()
     pt_br;
     system("color 1E");
 
-    int opc,i;
-    double mediaHipotetica, mediaAmostral, TamanhoAmostra, desvioPadrao, nivelSignificancia, z, AreaTeste=100.00,tabela; //VARIAVEIS TESTE DE HIPÓTESES
-    double mediaIC, TamanhoAmostraIC, desvioPadraoIC, nivelConf, IC,ICneg, Populacao, raizPop;//INTERVALO DE CONFIANÇA (POPULAÇÃO CONHECIDA)
-    double n, p, q, fatN,fatK, k, X, P;//DISTRIBUIÇÃO NORMAL
-    double MediaInterval, OcorInterval, ValLambida, OcorVariavel; //DISTRIBUIÇÃO DE POISSON
+    int opc,i, var;
+    double mediaHipotetica, mediaAmostral, TamanhoAmostra, desvioPadrao, nivelSignificancia, z, AreaTeste=100.00,tabela; //VARIAVEIS TESTE DE HIPÃ“TESES
+    double mediaIC, TamanhoAmostraIC, desvioPadraoIC, nivelConf, IC,ICneg, Populacao, raizPop;//INTERVALO DE CONFIANÃ‡A (POPULAÃ‡ÃƒO CONHECIDA)
+    double n, p, q, fatN,fatK, k, X, P;//DISTRIBUIÃ‡ÃƒO NORMAL
+    double MediaInterval, OcorInterval, ValLambida, OcorVariavel; //DISTRIBUIÃ‡ÃƒO DE POISSON
+    double media,desvio, Valz;//DISTRIBUIÃ‡ÃƒO NORMAL OU (GAUSS)
+    vector<double> zDn;
 
     do{
         system("cls");
         cabecalho();
         cout << " \t [1] TESTE DE HIPOTESES" << endl;
-        cout << " \t [2] INTERVALO DE CONFIANÇA" << endl;
-        cout << " \t [3] INTERVALO DE CONFIANÇA (POPULAÇÃO CONHECIDA)" << endl;
-        cout << " \t [4] DISTRIBUIÇÃO NORMAL" << endl;
-        cout << " \t [5] DISTRIBUIÇÃO DE POISSON" << endl;
-        cout << " \t [6] Potencia" << endl;
+        cout << " \t [2] INTERVALO DE CONFIANÃ‡A" << endl;
+        cout << " \t [3] INTERVALO DE CONFIANÃ‡A (POPULAÃ‡ÃƒO CONHECIDA)" << endl;
+        cout << " \t [4] DISTRIBUIÃ‡ÃƒO NORMAL" << endl;
+        cout << " \t [5] DISTRIBUIÃ‡ÃƒO DE POISSON" << endl;
+        cout << " \t [6] DISTRIBUIÃ‡ÃƒO NORMAL OU (GAUSS)" << endl;
         cout << " \t [7] SOBRE" << endl;
         cout << " \t [0] Sair" << endl;
         cout<<endl;
@@ -71,10 +74,10 @@ int main()
 
         case 1:
            pt_br;
-           cout << "Digite a média hipotetica [Alegacao]" << endl;
+           cout << "Digite a mÃ©dia hipotetica [Alegacao]" << endl;
            cin>>mediaHipotetica;
 
-           cout << "Digite a média Amostral" << endl;
+           cout << "Digite a mÃ©dia Amostral" << endl;
            cin>>mediaAmostral;
 
            cout << "Digite o TamanhoAmostra" << endl;
@@ -100,15 +103,15 @@ int main()
            cout<<"Dados"<<endl;
            cout<<endl;
            cout<<endl;
-           cout<<"Média Hipotética = "<<mediaHipotetica<<endl;
-           cout<<"Média Amostral = "<<mediaAmostral<<endl;
+           cout<<"MÃ©dia HipotÃ©tica = "<<mediaHipotetica<<endl;
+           cout<<"MÃ©dia Amostral = "<<mediaAmostral<<endl;
            cout<<"TamanhoAmostra = "<<TamanhoAmostra<<endl;
            cout <<"Digite o desvioPadrao = "<<desvioPadrao<<endl;
            //cout <<"nivelSignificancia = "<<nivelSignificancia<<endl;
 
            cout<<endl;
            cout<<endl;
-           cout<<"Média Amostral -  Média Hipotética"<<endl;
+           cout<<"MÃ©dia Amostral -  MÃ©dia HipotÃ©tica"<<endl;
            cout<<"----------------------------------"<<endl;
            cout<<"         desvioPadrao         "<<endl;
            cout<<"    ------------------------      "<<endl;
@@ -142,13 +145,13 @@ int main()
         system("cls");
         cout<<endl;
         cout<<endl;
-        cout << "Digite a média" << endl;
+        cout << "Digite a mÃ©dia" << endl;
         cin>>mediaIC;
         cout << "Digite o Tamanho da Amostra" << endl;
         cin>>TamanhoAmostraIC;
-        cout << "Digite o Desvio Padrão" << endl;
+        cout << "Digite o Desvio PadrÃ£o" << endl;
         cin>>desvioPadraoIC;
-        cout << "Digite o nível de Confiança(Porcentagem)" << endl;
+        cout << "Digite o nÃ­vel de ConfianÃ§a(Porcentagem)" << endl;
         cin>>nivelConf;
         nivelConf = nivelConf/100;
         nivelConf = nivelConf/2;
@@ -163,8 +166,8 @@ int main()
 
        cout<<endl;
        cout<<endl;
-       cout<<"                   z(Intervalo Tabela)X desvio Padrão"<<endl;
-       cout<<"  IC = x(média)  +-   ----------------------------------"<<endl;
+       cout<<"                   z(Intervalo Tabela)X desvio PadrÃ£o"<<endl;
+       cout<<"  IC = x(mÃ©dia)  +-   ----------------------------------"<<endl;
        cout<<"                          raiz(TamanhoAmostra)         "<<endl;
        cout<<endl;
        cout<<endl;
@@ -195,18 +198,18 @@ int main()
         system("cls");
         cout<<endl;
         cout<<endl;
-        cout << "Digite a média" << endl;
+        cout << "Digite a mÃ©dia" << endl;
         cin>>mediaIC;
         cout << "Digite o Tamanho da Amostra" << endl;
         cin>>TamanhoAmostraIC;
-        cout << "Digite o Desvio Padrão" << endl;
+        cout << "Digite o Desvio PadrÃ£o" << endl;
         cin>>desvioPadraoIC;
-        cout << "Digite o nível de Confiança (Porcentagem)" << endl;
+        cout << "Digite o nÃ­vel de ConfianÃ§a (Porcentagem)" << endl;
         cin>>nivelConf;
         nivelConf = nivelConf/100;
         nivelConf = nivelConf/2;
 
-        cout<<"Digite o Tamanho da População"<<endl;
+        cout<<"Digite o Tamanho da PopulaÃ§Ã£o"<<endl;
         cin>>Populacao;
 
         printf("Verificar o valor na tabela: %.4f ", nivelConf);
@@ -219,8 +222,8 @@ int main()
 
        cout<<endl;
        cout<<endl;
-       cout<<"                   z(Intervalo Tabela)X desvio Padrão        |  N-n     "<<endl;
-       cout<<"  IC = x(média)  +-   ---------------------------------- raiz| -----            "<<endl;
+       cout<<"                   z(Intervalo Tabela)X desvio PadrÃ£o        |  N-n     "<<endl;
+       cout<<"  IC = x(mÃ©dia)  +-   ---------------------------------- raiz| -----            "<<endl;
        cout<<"                          raiz(TamanhoAmostra)               |  N-1      "<<endl;
        cout<<endl;
        cout<<endl;
@@ -254,7 +257,7 @@ int main()
         cout<<endl;
         cout<<endl;
         cout<<"P = Probabilidade de Sucesso"<<endl;
-        cout<<"Q = Probabilidade de Não Sucesso"<<endl;
+        cout<<"Q = Probabilidade de NÃ£o Sucesso"<<endl;
         cout<<endl;
         cout<<endl;
         cout<<"Digite a probabilidade de sucesso"<<endl;
@@ -308,9 +311,9 @@ int main()
         system("cls");
         cout<<endl;
         cout<<endl;
-        cout << "\tDISTRIBUIÇÃO DE POISSON" << endl;
+        cout << "\tDISTRIBUIÃ‡ÃƒO DE POISSON" << endl;
         cout<<endl;
-        cout << "\tO que diferencia essa distribuição é a Análise envolvendo um espaço ou tempo " << endl;
+        cout << "\tO que diferencia essa distribuiÃ§Ã£o Ã© a AnÃ¡lise envolvendo um espaÃ§o ou tempo " << endl;
         cout<<endl;
 
         cout<<"                                       "<<endl;
@@ -320,7 +323,7 @@ int main()
         cout<<"                     K!                "<<endl;
         cout<<endl;
 
-        cout << "\t[1]Deseja Calcular o Valor de Lambida (apartir de duas variáveis)" << endl;
+        cout << "\t[1]Deseja Calcular o Valor de Lambida (apartir de duas variÃ¡veis)" << endl;
         cout << "\t[2]Inserir o valor de Lambida" << endl;
         cout << "\t[3]Inserir o valor de Lambida Com um intervalo de Ocorrencias >[Maior] ou <[Menor]" << endl;
         cout<<endl;
@@ -331,7 +334,7 @@ int main()
         if(X == 1){
             cout<<"\tCalcular o Valor de lambda"<<endl;
             cout<<endl;
-            cout<<"Média do intervalo"<<endl;
+            cout<<"MÃ©dia do intervalo"<<endl;
             cin>>MediaInterval;
 
             cout<<"Ocorrencia do intervalo"<<endl;
@@ -342,7 +345,7 @@ int main()
             }
         if(X == 2){
 
-            cout<<"Inserir Valor de lambda (média)"<<endl;
+            cout<<"Inserir Valor de lambda (mÃ©dia)"<<endl;
             cin>>ValLambida;
 
             cout<<"Inserir Valor Total do Intervalo"<<endl;
@@ -378,16 +381,16 @@ int main()
         if(X == 3){
 
 
-            cout<<"Inserir Valor de lambda (média)"<<endl;
+            cout<<"Inserir Valor de lambda (mÃ©dia)"<<endl;
             cin>>ValLambida;
 
             cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
             cout<<endl;
-            cout<<"\tOcorrencia é > ou >= ou <= ou < que a Probabilidade a ser considerada"<<endl;
+            cout<<"\tOcorrencia Ã© > ou >= ou <= ou < que a Probabilidade a ser considerada"<<endl;
             cout<<endl;
             cout<<"\tExemplo:"<<endl;
             cout<<endl;
-            cout<<"\tConsidera-se antender no mínimo 2, ou seja, k(ocorrencias) poderia ser k=2,3,4,5..."<<endl;
+            cout<<"\tConsidera-se antender no mÃ­nimo 2, ou seja, k(ocorrencias) poderia ser k=2,3,4,5..."<<endl;
             cout<<"\tNesse caso considera-se o intervalo de ocorrencias P(X < 2) = P(X=1)+P(X=0) - 100% Calculo Complementar"<<endl;
             cout<<endl;
             cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
@@ -460,6 +463,75 @@ int main()
         break;
 
         case 6:
+            system("cls");
+            cout<<endl;
+            cout<<endl;
+            cout<<"\tDISTRIBUIÃ‡ÃƒO NORMAL OU (GAUSS)"<<endl;
+            cout<<endl;
+            cout<<"\tExemplo:"<<endl;
+            cout<<endl;
+            cout<<"\tP( 2 < X < 2.05)"<<endl;
+            cout<<"MÃ©dia = 2"<<endl;
+            cout<<"desvio padrÃ£o = 2"<<endl;
+            cout<<endl;
+            cout<<"                                   _                                     "<<endl;
+            cout<<"           _____              "<<"    "<<"|"<<"           2-2(mÃ©dia)             "<<endl;
+            cout<<"          |  |X||             "<<"    "<<"|"<<"     z=    ----------   = 0       "<<endl;
+            cout<<"          |  |X||             "<<"    "<<"|"<<"            0.04(Desvio padrÃ£o)   "<<endl;
+            cout<<"          |  |X||             "<<"    "<<"|"<<"                                  "<<endl;
+            cout<<"          |  |X||             "<<"    "<<"|"<<"           2.05-2(mÃ©dia)             "<<endl;
+            cout<<"        __/  |X| \\__         "<<"     "<<"|"<<"     z=    ----------   = 1.25    "<<endl;
+            cout<<"  ___________|X|___________X  "<<"    "<<"|"<<"            0.04(Desvio padrÃ£o)      "<<endl;
+            cout<<"             2->2.05          "<<"    "<<"|"<<endl;
+            cout<<"                                  |_                                     "<<endl;
+            cout<<endl;
+            cout<<"P(2 < X < 2.05 ) = P (0 < Z < 1.25)"<<endl;
+            cout<<"TABELA (1.25) = 0.39435 = 39.44%   "<<endl;
+
+            cout<<endl;
+            cout<<endl;
+            cout<<"           X-X(mÃ©dia)             "<<endl;
+            cout<<"     z=    ----------             "<<endl;
+            cout<<"            s(Desvio padrÃ£o)      "<<endl;
+
+
+
+            cout<<endl;
+            cout<<endl;
+            cout<<" Digite o valor da mÃ©dia:";
+            cin>>media;
+            cout<<" Desvio padrÃ£o:";
+            cin>>desvio;
+            cout<<" Calcular valor de z (Correspondetes) | Digite a Quantidade de valores: ";
+            cin>>var;
+            i=0;
+
+            while(i != var){
+
+            cout<<" Digite z"<<i<<": ";
+            cin>>Valz;
+
+            Valz = Valz - media;
+            Valz = Valz/desvio;
+            zDn.insert(zDn.begin(),Valz);
+
+            cout<<endl;
+            cout<<" Resposta Calculo"<<i<<" = "<<Valz<<endl;
+
+            i++;
+            }
+
+            if(var == 2){
+                cout<<"\tP("<<zDn[1]<<" < "<<" Z "<<" < "<<zDn[0]<<")"<<endl;
+            }else{
+                cout<<"\tP( Z > "<<zDn[0]<<")"<<endl;
+            }
+
+            cout<<"\tVerifique o valor na Tabela Normal: "<<endl;
+            printf("\t%.2f",zDn[0]);
+            cout<<endl;
+            cout<<"Resposta"<<endl;
+
 
             cout<<endl;
             cout<<endl;
@@ -470,10 +542,10 @@ int main()
             cout<<endl;
             cout<<endl;
             cout<<"\tAutor: Clark Maltempi"<<endl;
-            cout<<"\tTema: Estatística"<<endl;
+            cout<<"\tTema: EstatÃ­stica"<<endl;
             cout<<endl;
-            cout<<"\tEssa é a primeira versão do software que envolve calculos estátisticos abrangendo probabilidade"<<endl;
-            cout<<"\tConceitos Abordados, Testes de hipóteses, Intervalo de Confiança, Distribuição Normal, Distribuição de Poisson... "<<endl;
+            cout<<"\tEssa Ã© a primeira versÃ£o do software que envolve calculos estÃ¡tisticos abrangendo probabilidade"<<endl;
+            cout<<"\tConceitos Abordados, Testes de hipÃ³teses, Intervalo de ConfianÃ§a, DistribuiÃ§Ã£o Normal, DistribuiÃ§Ã£o de Poisson... "<<endl;
             cout<<endl;
             cout<<endl;
             system("\tpause");
@@ -483,7 +555,7 @@ int main()
         case 0:
             cout<<endl;
             cout<<endl;
-            cout<<"\tVocê optou por sair!!!"<<endl;
+            cout<<"\tVocÃª optou por sair!!!"<<endl;
             system("\tpause");
         break;
 
