@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1654700005 source:c:\users\adm\documents\cpp\probabilidade\main.cpp
+	<iostream>
+	<locale.h>
+	<math.h>
+
