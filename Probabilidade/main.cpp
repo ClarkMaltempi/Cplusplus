@@ -47,13 +47,13 @@ int main()
     pt_br;
     system("color 1E");
 
-    int opc,i, var;
-    double mediaHipotetica, mediaAmostral, TamanhoAmostra, desvioPadrao, nivelSignificancia, z, AreaTeste=100.00,tabela; //VARIAVEIS TESTE DE HIPÓTESES
-    double mediaIC, TamanhoAmostraIC, desvioPadraoIC, nivelConf, IC,ICneg, Populacao, raizPop;//INTERVALO DE CONFIANÇA (POPULAÇÃO CONHECIDA)
-    double n, p, q, fatN,fatK, k, X, P;//DISTRIBUIÇÃO NORMAL
-    double MediaInterval, OcorInterval, ValLambida, OcorVariavel; //DISTRIBUIÇÃO DE POISSON
-    double media,desvio, Valz;//DISTRIBUIÇÃO NORMAL OU (GAUSS)
-    vector<double> zDn;
+    int opc=0,i=0, var=0, op=0;
+    double mediaHipotetica=0, mediaAmostral=0, TamanhoAmostra=0, desvioPadrao=0, nivelSignificancia=0, z=0, AreaTeste=100.00,tabela=0; //VARIAVEIS TESTE DE HIPÓTESES
+    double mediaIC=0, TamanhoAmostraIC=0, desvioPadraoIC=0, nivelConf=0, IC=0,ICneg=0, Populacao=0, raizPop=0;//INTERVALO DE CONFIANÇA (POPULAÇÃO CONHECIDA)
+    double n=0, p=0, q=0, fatN=0,fatK=0, k=0, X=0, P=0;//DISTRIBUIÇÃO NORMAL
+    double MediaInterval=0, OcorInterval=0, ValLambida=0, OcorVariavel=0; //DISTRIBUIÇÃO DE POISSON
+    double media=0,desvio=0, Valz=0, result=0, Valor1=0,Valor2=0;//DISTRIBUIÇÃO NORMAL OU (GAUSS)
+
 
     do{
         system("cls");
@@ -239,6 +239,9 @@ int main()
         IC = tabela*desvioPadraoIC;
         IC = IC/(sqrt(TamanhoAmostraIC));
         raizPop = (Populacao-TamanhoAmostraIC)/(Populacao-1);
+        //cout<<"Num: "<<raizPop<<endl;
+        raizPop = sqrt(raizPop);
+        //cout<<"raiz: "<<raizPop<<endl;
         IC = IC*raizPop;
 
         ICneg = IC;
@@ -260,13 +263,13 @@ int main()
         cout<<"Q = Probabilidade de Não Sucesso"<<endl;
         cout<<endl;
         cout<<endl;
-        cout<<"Digite a probabilidade de sucesso"<<endl;
-        cin>>q;
-        cout<<"Digite a probabilidade de No-sucess"<<endl;
+        cout<<"Digite a probabilidade de sucesso (porcentagem)"<<endl;
         cin>>p;
+        cout<<"Digite a probabilidade de No-sucess (porcentagem)"<<endl;
+        cin>>q;
         cout<<"Digite a Quantidade de itens testados - Tamanho Total: (n)"<<endl;
         cin>>n;
-        cout<<"Digite a Probabilidade que deseja Calcular (k)"<<endl;
+        cout<<"Digite a Probabilidade entre os itens testados que deseja Calcular (k)"<<endl;
         cin>>k;
         cout<<endl;
         cout<<endl;
@@ -448,7 +451,7 @@ int main()
 
             //printf("%.5f",X);
 
-            cout<<"\tResultado:   "<<X<<" % "<<endl;
+            cout<<"Resultado:   "<<X<<" % "<<endl;
         }
 
 
@@ -471,8 +474,8 @@ int main()
             cout<<"\tExemplo:"<<endl;
             cout<<endl;
             cout<<"\tP( 2 < X < 2.05)"<<endl;
-            cout<<"Média = 2"<<endl;
-            cout<<"desvio padrão = 2"<<endl;
+            cout<<"\tMédia = 2"<<endl;
+            cout<<"\tdesvio padrão = 2"<<endl;
             cout<<endl;
             cout<<"                                   _                                     "<<endl;
             cout<<"           _____              "<<"    "<<"|"<<"           2-2(média)             "<<endl;
@@ -502,37 +505,174 @@ int main()
             cin>>media;
             cout<<" Desvio padrão:";
             cin>>desvio;
-            cout<<" Calcular valor de z (Correspondetes) | Digite a Quantidade de valores: ";
+            cout<<" Calcular valor de z (Correspondetes) | Digite a Quantidade de valores Max[2]: ";
             cin>>var;
             i=0;
 
-            while(i != var){
-
-            cout<<" Digite z"<<i<<": ";
-            cin>>Valz;
-
-            Valz = Valz - media;
-            Valz = Valz/desvio;
-            zDn.insert(zDn.begin(),Valz);
-
-            cout<<endl;
-            cout<<" Resposta Calculo"<<i<<" = "<<Valz<<endl;
-
-            i++;
-            }
-
-            if(var == 2){
-                cout<<"\tP("<<zDn[1]<<" < "<<" Z "<<" < "<<zDn[0]<<")"<<endl;
+            if(var > 2){
+                cout<<"Valor Inválido!"<<endl;
             }else{
-                cout<<"\tP( Z > "<<zDn[0]<<")"<<endl;
+                while(i != var){
+
+                cout<<" Digite z"<<i<<": ";
+                cin>>Valz;
+
+                Valz = Valz - media;
+                Valz = Valz/desvio;
+
+                if(i == 0){
+                    Valor1 += Valz;
+
+                    cout<<endl;
+                    cout<<" Resposta do Calculo z"<<i<<" = "<<Valz<<endl;
+                }
+
+                if(i==1){
+                    Valor2 += Valz;
+
+                    cout<<endl;
+                    cout<<" Resposta do Calculo z"<<i<<" = "<<Valz<<endl;
+                }
+
+                i++;
+                }
+
+                if(var == 2){
+                    cout<<endl;
+                    cout<<endl;
+                    cout<<"-------------------------------------------"<<endl;
+                    cout<<"\tP("<<Valor1<<" < "<<" Z "<<" < "<<Valor2<<")"<<endl;
+
+                    if(Valor1 != 0){
+
+                        cout<<endl;
+                        cout<<endl;
+                        cout<<"-------------------------------------------"<<endl;
+                        cout<<"\tVerifique o valor na Tabela Normal: "<<endl;
+
+
+                        cout<<"\tP( Z > "<<Valor1<<")"<<endl;
+                        cout<<endl;
+                        cout<<"-------------------------------------------"<<endl;
+                        cout<<endl;
+
+                    }else{
+                        cout<<"Se o valor 1 é igual 0, estamos considerando metade da área do graáfico"<<endl;
+                    }
+
+                    if(Valor2 != 0){
+
+                        cout<<endl;
+                        cout<<endl;
+                        cout<<"-------------------------------------------"<<endl;
+                        cout<<"\tVerifique o valor na Tabela Normal: "<<endl;
+
+                        cout<<"\tP( Z > "<<Valor2<<")"<<endl;
+                        cout<<endl;
+                        cout<<"-------------------------------------------"<<endl;
+                        cout<<endl;
+                    }else{
+                        cout<<"Se o valor 2 é igual 0, estamos considerando metade da área negativa do gráfico"<<endl;
+                        cout<<"No caso o lado positivo é equivalente ao lado negativo"<<endl;
+                    }
+
+                    if(Valor2 != 0 && Valor1 != 0){
+
+                        cout<<endl;
+                        cout<<endl;
+                        cout<<"-------------------------------------------"<<endl;
+                        cout<<"Insira o valor 1 encontrado na Tabela Normal: "<<endl;
+                        cin>>Valor1;
+                        cout<<"Insira o valor 2 encontrado na Tabela Normal: "<<endl;
+                        cin>>Valor2;
+
+                        cout<<"Você Inseriu Valor 1 : "<<Valor1<<endl;
+                        cout<<"Você Inseriu Valor 1: "<<Valor2<<endl;
+
+                        result = Valor1+Valor2;
+                        cout<<endl;
+                        cout<<"-------------------------------------------"<<endl;
+                        cout<<endl;
+                        cout<<"Resultado da Soma"<<endl;
+                        cout<<endl;
+                        printf("%0.5f",result);
+                        cout<<endl;
+                        cout<<"-------------------------------------------"<<endl;
+                        cout<<endl;
+                    }
+
+                }
+                if(var == 1){
+                    cout<<endl;
+                    cout<<endl;
+                    cout<<"-------------------------------------------"<<endl;
+                    cout<<"\tP( Z > "<<Valor1<<")"<<endl;
+
+
+                    cout<<endl;
+                    cout<<endl;
+                    cout<<"-------------------------------------------"<<endl;
+                    cout<<"\tVerifique o valor na Tabela Normal: "<<endl;
+                    cout<<"********"<<endl;
+                    printf("%.2f",Valor1);
+                    cout<<endl;
+                    cout<<"-------------------------------------------"<<endl;
+                    cout<<endl;
+
+
+                cout<<"Definir a área do gráfico"<<endl;
+                cout<<"[1] (Z < z) ou (Z > z) Valor (Valor será somado com o restante da área)"<<endl;
+                cout<<"[2] z > Valor (Valor será subtraído área complementar de 100%)"<<endl;
+                cout<<"[3] 0 < z < início de 0 até valor, permanece o valor da tabela"<<endl;
+                cin>>op;
+
+                if(op == 1){
+                    cout<<"Insira o valor na Tabela Normal: ";
+                    cin>>result;
+
+                        cout<<"Você Inseriu: ";
+                        cout<<result<<endl;
+                        cout<<endl;
+                        result = 0.5000+result;
+                        cout<<endl;
+                        cout<<"Nesse caso a resposta é esse valor da Tabela + ** 0.5 ** multiplicado por 100"<<endl;
+                        cout<<"No caso o restante da área"<<endl;
+                        cout<<endl;
+                        printf("%0.5f",result);
+                        cout<<endl;
+                        cout<<endl;
+
+
+                        cout<<"Nesse caso a resposta é esse valor multiplicado por 100"<<endl;
+                    }
+
+                 if(op == 2){
+                    cout<<"Insira o valor da Tabela Normal: ";
+                    cin>>result;
+
+                        cout<<"Você Inseriu: ";
+                        cout<<result<<endl;
+                        cout<<endl;
+                        result = 0.5000-result;
+                        cout<<endl;
+                        cout<<"Nesse caso a resposta é esse valor da Tabela + ** 0.5 ** multiplicado por 100"<<endl;
+                        cout<<"No caso o restante da área"<<endl;
+                        cout<<endl;
+                        printf("%0.5f",result);
+                        cout<<endl;
+                        cout<<endl;
+
+
+                        cout<<"Nesse caso a resposta é esse valor multiplicado por 100"<<endl;
+                    }
+
+                if(op == 3){
+                    cout<<"Valor da Tabela é o resultado"<<endl;
+                }
+
+
+                }
             }
-
-            cout<<"\tVerifique o valor na Tabela Normal: "<<endl;
-            printf("\t%.2f",zDn[0]);
-            cout<<endl;
-            cout<<"Resposta"<<endl;
-
-
             cout<<endl;
             cout<<endl;
             system("\tpause");
@@ -566,14 +706,7 @@ int main()
 
         }
 
-
-
     }while(opc != 0);
-
-
-
-
-
 
 
 
