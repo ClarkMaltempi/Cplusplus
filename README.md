@@ -5,7 +5,6 @@
 
 <h2>Indice</h2></br>
 <a href="#sobre">Sobre</a></br>
-<a href="#Inserindo-Valores">Inserir</a></br>
 <a href="#ENUM">Enum</a></br>
 <a href="#STRUCT">Struct</a></br>
 <a href="#STRUCT-ARRAY">Struct-Array</a></br>
@@ -46,21 +45,13 @@ Lista | Lista Linear | Ordenação |
 Pilha | Pilha Ligada | Probabilidade | 
 Recursivas | Projeto Teatro |Projeto Teatro v2 |
 
-##</br>
+
+
 # Sobre
 <p>Este repositorio contem mini projetos desenvolvidos para manipulação da linguagem c++</p>
 <p>Você pode encontrar a explicação com trechos de código no desenvolvimento e Estrutura de dados da Linguagem</p>
 
 
-
-# pre-requisitos
-
-```c++
-
-printf("teste");
-
-
-```
 
 # Inserindo-Valores
 
