@@ -20,10 +20,11 @@ Recursivas | Projeto Teatro |Projeto Teatro v2 |
 <a href="#Inserindo-Valores">Inserir</a></br>
 <a href="#ENUM">Enum</a></br>
 <a href="#STRUCT">Struct</a></br>
-<a href="#STRUCT-ARRAY">Struct-ARRAY</a></br>
-<a href="#PONTEIROS">PONTEIROS</a></br>
-<a href="#PONTEIROS-ARRAY">PONTEIROS-ARRAY</a></br>
-
+<a href="#STRUCT-ARRAY">Struct-Array</a></br>
+<a href="#PONTEIROS">Ponteiros</a></br>
+<a href="#PONTEIROS-ARRAY">Ponteiros-Array</a></br>
+<a href="#ALOCACAO-DINAMICA">Alocação-Dinamica</a></br>
+<a href="#RECURSIVAS">funções-Recursivas</a></br>
 
 # Sobre
 <p>Este repositorio contem mini projetos desenvolvidos para manipulação da linguagem c++</p>
@@ -365,4 +366,125 @@ void iniVetor (float *v){
 
 
 ```
+
+# ALOCACAO-DINAMICA
+
+```c++
+
+#include <iostream>
+#include <stdio.h> // Para função gets
+#include <stdlib.h> //Para função malloc
+
+
+//Malloc de memóry alocation, alocar exatamente o que é necessário para reservar um espaço de memória
+
+int main (){
+
+		char *vnome;
+		vnome=(char*)malloc(sizeof(char)) //indicar o tamanho do bloco, retorna void, porém a variável nome é char, tapecast para converter o retorno/ sizeof retorna o tamanho do elemento (char) 1 byte
+		vnome=(char*)malloc(sizeof(char)+1)//Soma a alocação de memória
+
+
+		gets(vnome);
+
+
+
+
+
+	return 0;
+
+}
+
+```
+
+# RECURSIVAS
+
+
+
+```c++
+
+#include <iostream>
+
+using namespace std;
+
+int main (){
+
+		contador(20);
+
+
+
+		return 0;
+
+
+}
+
+void contador(int num, int cont){
+	cout << cont << "\n";
+	if(num > cont){
+		contador(num, ++cont);
+		
+	}
+	
+}
+
+
+/////////////////////////Recursividade Fatorial
+
+#include <iostream>
+
+using namespace std;
+
+int main (){
+	
+		int val,res;
+		
+		val=8;
+		res=fatorial(val);
+		cout << "Fatorial de " << val ": " << res;
+		
+		cout << "\n\nFibonacci com " << val <<" valores: ";
+		for(int i=0; i<val;i++){
+			cout << fibonacci (i+1) << " ";
+			
+		}
+
+		cout << "\n\n";
+
+		return 0;
+}
+
+int fatorial (int n) {
+	if(n==0){
+		
+		return 1;
+	}
+	return n*fatorial(n-1);
+	
+}
+
+int fibonacci(int n){
+	if (n==1 || n==2){
+		return 1;
+		
+	}else{
+		return fibonacci(n-1)+fibonacci(n-2);
+	}
+	
+}
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
