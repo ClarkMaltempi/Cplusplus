@@ -1,7 +1,7 @@
 
 # Cplusplus
 
-<p>Principais conceitos trabalhados com a linguagem C++
+>Principais conceitos trabalhados com a linguagem C++
 
 <h2>Indice</h2></br>
 <a href="#sobre">Sobre</a></br>
@@ -20,6 +20,18 @@
 <a href="#POO-CLASSES">POO-CLASSES</a></br>
 <a href="#GET-SET">GET-SET</a></br>
 <a href="#HERANCA">Herança</a></br>
+<a href="#VECTOR">Vector</a></br>
+<a href="#INTERATOR">interator</a></br>
+<a href="#CONVERTER-STRING">Converter-String</a></br>
+<a href="#DATA">Data</a></br>
+<a href="#CHRONO">Biblioteca-Chrono</a></br>
+<a href="#CTIME-TIME">CTIME-TIME.h</a></br>
+<a href="#ARQUIVOS">Arquivos</a></br>
+<a href="#FUNCOES-LAMBDA">Funções-Lambda</a></br>
+<a href="#CLASSES-ARMAZENAMENTO">Classes-Armazenamento_externo</a></br>
+<a href="#PONTEIROS-INTELIGENTES">Ponteiros-Inteligentes</a></br>
+<a href="#FOREACH">Foreach</a></br>
+<a href="#XML">XML</a></br>
 
 </br>
 </br>
@@ -783,6 +795,75 @@ void Aviao::imprimir(){
 ```
 
 
+```c++
+//POO --
+
+class Carro{
+	
+	public:
+	
+		int velMax;
+		int potencia;
+		const char* nome;
+		
+		Carro(const char* n, int p){
+			this->nome=n;
+			this->potencia=p;
+			if(p<100){
+				this->velMax = 120;
+			}else if(p<200){
+				this->velMax=220;
+			}
+		}//Método Construtor
+};
+
+//main
+
+//instanciando a classe
+Carro *c1=new Carro("Bruno", 300);
+cout<<c1->nome<< " - " <<c1->potencia <<" - " << c1->velMax << endl;
+
+delete c1;
+
+//Lista de inicialização com o new usamos a seta
+
+Carro(const char* n, int p):nome(n), potencia(p){
+	
+			if(p<100){
+				this->velMax = 120;
+			}else if(p<200){
+				this->velMax=220;
+			}
+		}//Método Construtor
+
+
+
+//main
+
+Carro c1{"Bruno", 70};
+cout<<c1.nome<< " - " <<c1.potencia <<" - " << c1.velMax << endl;
+
+//usar um smart point inteligente
+#include <memory>
+
+//main
+
+unique_ptr<Carro>c1(new Carro{"Bruno", 70});
+cout<<c1->nome<< " - " <<c1->potencia <<" - " << c1->velMax << endl;
+
+
+
+
+
+	
+var query = from element in root.Elements
+where (string)element.Attribute ("atr") == "search" 
+select element;
+
+
+```
+
+
 
 # GET-SET
 
@@ -960,6 +1041,918 @@ Carro::Carro(){
 
 ```
 
+
+# VECTOR
+
+
+
+```c++
+
+
+#include <vector>
+
+int main(){
+
+vector<int> num; // Criado um vetor sem tamanho
+vector<int> num(5); // Com tamanho
+vector<int> num2; // Criado um vetor sem tamanho
+
+
+int tam,i;
+
+num.push_back(10); //Inserir no final do vetor
+
+tam = num.size(); //armazena o tamanho do vector
+
+for(i=0;i<tam.size();i++){
+	cout << num[i];
+	
+}
+
+num1.swap(num2); //troca de valores entre vetores
+num1.front(); //retorna o primeiro elemento
+num1.back(); //retorna o primeiro elemento
+num1.at(tam/2);//retorno o valor do meio
+
+num1.insert(num1.begin(),8888);//begin -> inicio, valor a inserir
+num1.insert(num1.begin()+1,88);//begin -> inicio próxima posição indicando o +1
+num1.insert(num1.end()-1,88); //penultima posição
+num1.insert(num1.end(),88); //ultima posição
+num1.erase(num1.end()-1);//eliminar o elemento
+clear();limpa tudo
+
+while(!num1.empty(){
+	num1.pop_back;
+	
+}//retire até que o array fique vazio
+
+}
+
+
+```
+
+# INTERATOR
+
+
+```c++
+
+//Interator 
+
+vector<string>produtos = {"mouse", "teclado"};
+vector<string>::iterator it; //apontar o elemento
+
+it=produtos.begin(); //primeiro elemento
+it=produtos.end()-1; //ultimo elemento
+
+//advance
+//next
+//prev
+
+advance(it,3); //avançar
+
+cout <<*next(it,3)<<endl // avançar
+cout <<*prev(it,3)<<endl //anda para a esquerda
+
+cout << *it << endl; // colocar como ponteiro
+
+for(it=produtos.begin(); it!=produtos.end();it++){
+	cout << *it << endl;
+	
+}
+
+```
+
+
+# CONVERTER-STRING
+
+```c++
+
+strupr();
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// procedimento que converte uma string para maiúsculo
+void maiusculo(char s1[], char s2[]){
+    int i = 0;
+    while(s1[i] != '\0'){
+        s2[i] = toupper(s1[i]);
+        i++;
+    }
+    s2[i] = '\0'; // caracteer que indica o fim da string
+}
+
+// procedimento que converte uma string para minúsculo
+void minusculo(char s1[], char s2[]){
+    int i = 0;
+    while(s1[i] != '\0'){
+        s2[i] = tolower(s1[i]);
+        i++;
+    }
+    s2[i] = '\0'; // caracteer que indica o fim da string
+}
+
+int main() {
+    char str1[] = "Ola. Bom dia.";
+    char str2[500];
+
+    printf("String original: %s\n", str1);
+
+    maiusculo(str1, str2);
+    printf("String maiuscula: %s\n", str2);
+
+    minusculo(str1, str2);
+    printf("String minuscula: %s\n", str2);
+
+    return 0;
+}
+
+
+```
+
+
+
+
+# DATA
+
+
+```c++
+
+////////////////////////////////////////////////////DATA
+
+#include <stdio.h>
+#include <time.h>
+
+int main(void) {
+    time_t mytime;
+    mytime = time(NULL);
+    struct tm tm = *localtime(&mytime);
+    printf("Data: %d/%d/%d/\n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+}
+
+struct tm {
+    int tm_sec;   // Indica os segundos de 0 a 59
+    int tm_min;   // Indica os minutos de 0 a 59
+    int tm_hour;  // Indica as horas de 0 a 24
+    int tm_mday:  // Indica os dias do mês de 1 a 31
+    int tm_mon;   // Indica os meses do ano de 0 a 11
+    int tm_year;  // Indica o ano a partir de 1900
+    int tm_wday;  // Indica o dia da semana de 0 (domingo) até 6 (sábado)
+    int tm_yday;  // Indica o dia do ano de 1 a 365
+    int tm_isdst; // Indica o horário de verão se for diferente de zero
+};
+
+
+```
+
+
+#CHRONO
+
+
+```c++
+
+
+///***Biblioteca Chrono
+
+// é utilizado na versão 11 do C++
+#include <chrono>
+#include <ctime>
+
+using namespace chrono;
+
+minutes m(1);
+seconds s(1);
+minutes m=duration_cast<minutes>(s); //converter segundos em minutos para que funcione corretamente
+
+hours
+milliseconds
+microseconds
+nanoseconds
+
+cout<< s.count() << endl; // contagem
+
+using chrono::system_clock; // acessar o relógio do sistema
+duration<int,ratio<60*60*24>> um_dia(1);// duraration é o periodo em segundos
+
+system_clock::time_point hoje=system_clock::now(); // criando um ponto no tempo
+system_clock::time_point amanha=hoje + um_dia;
+system_clock::time_point ontem=hoje - um_dia;
+
+time_t tt;
+
+tt=system_clock::to_time(hoje);
+cout << "Hoje: " << ctime(&tt) << endl;
+
+tt=system_clock::to_time(amanha);
+cout << "amanhã: " << ctime(&tt) << endl;
+
+
+//Tempo
+steady_clock::time_point t1 = steady_clock::now(); //tempo
+cout << "Imprimindo 1500 estrelas: "<<endl;
+
+for (int i=0; i<1500; i++){
+	cout <<"*";
+}
+
+steady_clock::time_point t2 = steady_clock::now(); // outro tempo
+
+duration<double> tempo = duration_cast<duration<double> > (t2-t1);//duration_cast a conversão para double
+
+cout <<"Tempo de trabalho: "<< tempo.count() << "segundos";
+
+
+```
+
+
+# CTIME-TIME
+
+```c++
+
+time_t t;
+struct tm*infotempo; // implementado em ctime
+
+time(&t); 
+infoTempo=localtime(&t); // receber o tempo decorrido e converter para a estrutura tm
+
+cout << asctime(infoTempo)<<endl; //asctime converte para string
+
+cout<< infoTempo->tm_mday;
+
+////////////////////////////////////////////
+
+//Em utilizar o ctime não é necessário  implementar a struct como no exemplo acima
+time_t t;
+
+time(&t);
+
+cout<<ctime(&t)<<endl;
+
+///////////////////////////////// strftime formata a saída
+
+
+time_t t;
+struct tm*infoTempo; // implementado em ctime
+char buffer[80];
+
+time(&t); 
+infoTempo=localtime(&t); // receber o tempo decorrido e converter para a estrutura tm
+
+
+
+strftime(buffer,80, "Hora: %I : %M" , infoTempo);//resultado, tamanho, como eu quero que realize a formatação
+
+cout << buffer<<endl; //asctime converte para string
+
+///
+clock_t c; //tempo
+size_t tam; //Armazena tamanho
+struct tm * stinfo;
+time_t t;
+
+
+```
+
+
+# ARQUIVOS
+
+
+```c++
+
+#include <fstream>
+
+//ofstream, ifstream, fstream
+
+
+//Criar um arquivo
+
+ofstream arquivo;
+
+arquivo.open("impressora.txt");
+
+arquivo << "cfb Cursos";//armazenar no arquivo
+
+
+arquivo.close();
+
+
+```
+
+# FUNCOES-LAMBDA
+
+```c++
+
+
+//Características
+/*
+	[](){};
+	[captura de variáveis]
+	(parametros)->tipo_retorno
+	{
+		corpo da função
+	};
+*/
+//C++ 11
+
+int main(){
+	
+	auto maior = [](int n1, int n2)->int{
+		return(n1>n2)?n1:n2;
+		/* O mesmo valor
+		if(n1>n2){
+			return n1;
+		}else{
+			return n2;
+		}
+		*/	
+	};
+	
+	cout<< maior(2,6)<<endl;
+	
+	///****************************************Variações
+	//Utilizando o vector
+	
+	auto maior = [](vector<int>n)->int{
+		auto maior
+		for(int x:n){
+			m=(m>x)?m:x;
+		}
+		return m;
+	};
+	cout<< maior({2,6,10, 45,5,34,17})<<endl;
+	
+	///************************************Captura de variáveis
+	int x1,x2,x3,x4;
+	x1=10;
+	x2=5;
+	x3=2;
+	x4=12;
+	
+	auto soma=[x1,x2,x3,x4]()->int{
+		
+		return x1+x2+x3+x4;
+		
+	};
+	
+	auto maior = [](vector<int>n)->int{
+		auto maior
+		for(int x:n){
+			m=(m>x)?m:x;
+		}
+		return m;
+	};
+	cout<< maior({2,6,10, 45,5,34,17})<<endl;
+	cout<< soma()<<endl;
+	
+	return 0;
+}
+
+
+```
+
+
+# CLASSES-ARMAZENAMENTO
+
+
+```c++
+
+int soma(int n1, int n2){
+	return n1+n2;
+}
+
+auto soma(int n1, int n2)->int{//Retorno da função
+	return n1+n2;
+}
+
+int main(){
+	
+	auto num=0;//variavel de qualquer tipo, Na inicialização determinar o tipo de variável,não se preocupar em declarar
+	auto nome = "Bruno";
+	auto valor=10.5;
+	
+	auto res=soma(10,5);
+	
+	
+	
+	///Utilizando o vector
+	
+	vector<int>v{10,20,30,40,50,60,70};
+	
+	for(vector<int>::iterator it=v.begin(); it!=v.end();it++){
+		cout<<*it<<endl;
+	}
+	
+	//Declaração com auto
+	
+	for(auto it=v.begin(); it!=v.end();it++){
+		cout<<*it<<endl;
+	}
+	
+	register int cont; //Armazenar em um registrador e não na memória, variaveis que precisam ser acessada rapidamente-contador
+	for(cont=0;cont<=10;cont++){
+		//exemplo
+	}
+	
+	//Ele retornará 1 dessa maneira conforme está declarada***Static Armazena a variavel na memória e usa o mesmo endereço
+	void somador(){
+		int i=0;
+		i++;
+		cout<<i<<endl;
+	}
+
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+
+
+	void somador(){
+		static auto i=0;
+		i++;
+		cout<<i<<endl;
+	}
+
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	somador();
+	
+	return 0;
+}
+      
+ ////LOOP FOR ******************************************************************************************************** C 11 // Elementos inteiros
+
+//string mome="Bruno";
+const char* nome="Bruno";//Declaração do string moderno c++ não se aplica
+
+int x[10]{0,1,2,3,4,5,6,7,8,9};
+vector<int> n{1,2,3,4,5};
+
+for(auto i:n){
+	cout<<i<<endl;
+}
+
+//tradicional
+for(int i=0;i<=10;i++){
+	cout<<x[i]<<endl;
+}
+
+for(int i=0; i<=sizeof(nome);i++){
+	cout<<nome[i]<<endl;
+	
+}
+
+//for com base em intervalo // ou for range declaration
+for(int i:x){//cria uma variavel e passa a coleção
+	cout<< i <<endl;
+}
+
+
+
+///extern*************************************************************************************C11 //Acessar uma variável em outro arquivo externo
+//criar um outro arquivo .cpp na mesma pasta para realizar o teste
+
+
+//auxiliar
+using namespace std;
+extern int num;
+
+void impNum(){
+	cout<<num<<endl;
+}
+
+
+
+//main
+void impNum();
+int num {10};
+
+int main(){
+	impNum();
+	
+	
+	return 0;
+}
+
+//Conteiner Pair -- Par de Dados <int><string> ou <int><class> ou <int><int>**************************************************************
+//Semelhante ao vector armazena 1 elemento
+#include <utility>
+
+pair <int,string> par(10,"Bruno");//inicialização direta
+cout<<par.first << "-" <<par.second <<endl;
+
+//Adicionando valores
+pair <int,string> par;
+par.first=100;
+par.second="Bruno";
+
+//formato de Vetor
+const int tam=3;
+pair <int,string> par[tam];
+
+par[0].first=100;
+par[0].second="Bruno";
+
+par[1].first=200;
+par[1].second="nome";
+
+par[2].first=300;
+par[2].second="nome2";
+
+
+cout<<par[0].first << "-" <<par[0].second <<endl;
+
+//Outra maneira
+
+par[0]=make_pair(10,"Bruno");
+par[1]=make_pair(200,"nome");
+par[2]=make_pair(300,"nome2");
+
+for(int i=0;i<tam;i++){
+	cout<<par[i].first << "-" <<par[i].second <<endl;	
+}
+
+
+//Pair com três dados
+pair<int,par<string,double>>par[tam];
+par[0]=make_pair(10,make_pair("mouse",10.55));
+par[1]=make_pair(20,make_pair("teclado",50.55));
+par[2]=make_pair(30,make_pair("monitor",1210.55));
+
+for(int i=0;i<tam;i++){
+	cout<<par[i].first << "-" <<par[i].second.first<<" - "<<par[i].second.second <<endl;	
+}
+
+//utilizando vector
+#include <vector>
+
+vector<pair<int,string>>prod;
+
+prod.push_back(make_pair(10,"mouse"));
+prod.push_back(make_pair(20,"teclado"));
+
+for(int i=0;i<prod.size();i++){
+	cout<<prod[i].first << "-" <<prod[i].second <<endl;	
+}
+
+for(auto i:prod){
+	cout<<i.first << "-" <<i.second <<endl;	
+}
+
+
+//Container Map******************************************************************************************************
+#include <map>
+
+
+map<int, string>prod;//sem precisar de associação numero de elementos por exemplo
+
+//Outro exemplo de declaração
+//map<char,string>prod;
+//prod['a']="Mouse";
+
+//chave[0] X Valor
+prod[0]="mouse";
+prod[1]="teclado";
+prod[2]="Monitor";
+
+for(int i=0;i<3;i++){
+	cout<<prod[i]<<endl;
+}
+
+//Interator criar o inteirator
+
+for(auto it=prod.begin();it!=prod.end();i++){
+	cout<<it->first<<endl;//imprimir a chave
+	cout<<it->second<<endl;//imprimir o valor
+}
+
+for(auto it:prod){
+	cout<<it.first<<endl;
+}
+
+// Inserção usando o insert
+
+prod.insert(pair<int,string>(0,"Mouse"));//informar um pair exigencia do insert
+prod.insert(pair<int,string>(1,"Teclado"));
+prod.insert(pair<int,string>(2,"Monitor"));
+
+for(auto it:prod){
+	cout<<it.first<<" - "<<it.second<<endl;
+}
+
+//Deletar o elemento - Esse valor não é o elemento da posição 2, ele é a chave, se alterar o valor para 10 ele não vai encontrar
+
+prod.erase(2);
+
+//Deletar tudo
+prod.clear();
+
+//Procura uma chave - criando um iterator para map
+map<int, string>::iterator itmap;
+
+itmap=prod.find(2);
+
+if(itmap==prod.end()){
+	cout<<"Produto nao encontrado"<<endl;
+}else{
+	cout<<"Produto em estoque"<<endl;
+	cout<<"Codigo: "<<itmap->first<<"Produto: "<<itmap->second<<endl;
+}
+
+//Deletar uma faixa de elemntos
+prod.erase(prod.begin(), prod.find(1));//Pegando do inicio begin
+prod.erase(prod.find(0), prod.find(2)); 
+
+```
+
+
+
+# PONTEIROS-INTELIGENTES
+
+
+```c++
+
+/////////////////////PONTEIROS INTELIGENTES***********************************************************smart points
+//Asseguram a exclusão do objeto, a memória é liberada para atualização
+
+//Ponteiros
+
+//revisão
+int *pnum;
+int num;
+
+num=10;
+pnum=&num;
+
+cout<<*pnum<< "-"<<pnum<<endl;
+
+delete pnum;
+
+//***************************
+
+int *pnum=new int();
+
+*pnum=10;
+
+cout<<*pnum<< "-"<<pnum<<endl;
+
+delete pnum;
+
+
+//***************************Smart
+#include <memory>
+
+unique_ptr<int>pnum(new int());
+
+*pnum=10;
+
+cout<<*pnum<< "-"<<&pnum<<endl;
+
+//Ponteiro compartilhado
+
+shared_ptr<int>pnum(new int());
+shared_ptr<int>pnum2=pnum);
+
+//String ponteiro tradicional e smart
+
+string* str=new string("Cursos");
+cout<<*str<< "-tamanho"<<str->size()<<endl;
+delete str;
+
+unique_ptr<string>str(new string("Cursos"));
+cout<<*str<< "-tamanho"<<str->size()<<endl;
+
+//Classes
+
+class Carro{
+	
+	public:
+	int vel=0;
+	int getVel(){
+		return vel;
+	}
+	void setVel(int v){
+		this->vel=v;
+	}
+	
+};
+
+//tradicional
+Carro *c1=new Carro();
+
+cout<<"Velocidade"<<c1->getVel()<<endl;
+delete c1;
+
+//Com Smart
+
+unique_ptr<Carro>c1(new Carro);
+cout<<"Velocidade"<<c1->getVel()<<endl;
+
+//Shared Smart
+shared_ptr<Carro>c1(new Carro);
+shared_ptr<Carro>c2=c1;
+c1->setVel(10);
+c2->setVel(5);
+cout<<"Velocidade"<<c1->getVel()<<endl;//ele terá o mesmo valor alterando em todos por que está compartilhando o ponteiro
+cout<<"Velocidade"<<c2->getVel()<<endl;
+
+
+```
+
+
+
+# FOREACH
+
+```c++
+
+////////////////////Foreach*************************************************************************/////////////////////////////// C++11
+
+//Uma função que recebe 3 parametros, posição inicial do container(vector), posição final, função qe opera os elementos
+
+#include <vector>
+#include <algorithm>
+
+vector<int>n{0,1,2,3,4,5,6,7,8,9};
+
+//for em intereitor e intervalo
+
+vector<int>::iterator it;
+
+for(auto it=n.begin();it!=n.end();it++){
+	cout<<*it<<endl;
+}
+
+for(it:n){
+	cout<<it<<endl;
+}
+//***************************
+//foreach junto com a função lambda, for(pontoinicial,pontofinal, função lambda o que vai fazer com esses valores)
+
+vector<int>n{0,1,2,3,4,5,6,7,8,9};
+
+for_each(n.begin(),n.end(),[](int num){
+
+	cout<< num <<endl;
+});
+
+for_each(n.begin(),n.end(),[](int num){//Importante não altera o valor do vector
+	num+=10;
+	cout<< num <<endl;
+});
+
+
+
+```
+
+
+
+# XML
+
+
+```c++
+
+
+using System;  
+using System.IO;  
+using System.Xml;  
+
+
+public class Sample  
+{  
+    public static void Main()  
+    {  
+        // Create the XmlDocument.  
+        XmlDocument doc = new XmlDocument();  
+        doc.LoadXml("<book genre='novel' ISBN='1-861001-57-5'>" +  
+                   "<title>Pride And Prejudice</title>" +  
+                  "</book>");  
+ 
+        // Save the document to a file.  
+        doc.Save("data_.xml"); 
+
+        
+    }  
+}  
+
+//XML************************************************************************************************************************************
+
+using System;  
+using System.IO;  
+using System.Xml;  
+
+
+public class Sample  
+{  
+    public static void Main()  
+    {  
+        int i=0;
+        //List<string> InfoArq = new List<string>();
+        string[] arquivos = Directory.GetFiles(@"C:\Users\adm\Documents\Docs_XML\", "*.xml");
+        
+        while (i == arquivos.Length)
+        {
+            
+           
+        // Create the XmlDocument.
+          
+        XmlDocument doc = new XmlDocument();  
+        
+        doc.Load(@"C:\Users\adm\Documents\Docs_XML\data.xml");
+        string CaminhodoArquivo = @"C:\Users\adm\Documents\Docs_XML\data.xml";
+        //Ler o arquivo XML
+        XmlTextReader xmlReader = new XmlTextReader(CaminhodoArquivo);
+        while (xmlReader.Read())
+        {
+            switch (xmlReader.NodeType)
+            {
+                case XmlNodeType.Element:
+                    Console.WriteLine("<" + xmlReader.Name + ">");
+                    Console.WriteLine("<" + xmlReader.Name + ">"+Environment.NewLine);
+                    break;
+                case XmlNodeType.Text:
+                    Console.WriteLine(xmlReader.Value);
+                    Console.WriteLine(xmlReader.Value+ Environment.NewLine);
+                    break;
+                case XmlNodeType.EndElement:
+                    Console.WriteLine("<" + xmlReader.Name + ">");
+                    Console.WriteLine("<" + xmlReader.Name + ">" + Environment.NewLine);
+                    break;
+            }
+        }
+    
+        // Save the document to a file.  
+        doc.Save(@"C:\Users\adm\Documents\Docs_XML\data\data_.xml"); 
+        
+        i++;
+        }
+    }  
+}
+//xml reader*******************************************************************************************************************************
+using System;  
+using System.IO;  
+using System.Xml;  
+public class Sample  
+{  
+    public static void Main()  
+    {  
+        
+        string URLString = @"C:\Users\adm\Documents\doc\data\Produtos.xml";
+        XmlTextReader reader = new XmlTextReader (URLString);
+        while (reader.Read())
+        {
+            switch (reader.NodeType)
+            {
+                case XmlNodeType.Element: // The node is an element.
+                    Console.Write("<" + reader.Name);
+                    Console.WriteLine(">");
+                    break;
+                case XmlNodeType.Text: //Display the text in each element.
+                    Console.WriteLine (reader.Value);
+                    break;
+                case XmlNodeType. EndElement: //Display the end of the element.
+                    Console.Write("</" + reader.Name);
+                    Console.WriteLine(">");
+                    break;
+            }
+        }
+    }  
+}  
+					       
+					       
+					       
+					       
+//Contar numero de Dígitos
+			
+#include <iostream>
+#include <vector>
+#include <string>
+using std::cout; using std::cerr;
+using std::endl; using std::string;
+using std::to_string;
+template<typename T>
+size_t countDigits(T n)
+{
+    string tmp;
+    tmp = to_string(n);
+    return tmp.size();
+}
+int main() {
+    int num1 = 1234567;
+    int num2 = -1234567;
+    cout << "number of digits in " << num1 << " = " << countDigits(num1) << endl;
+    cout << "number of digits in " << num2 << " = " << countDigits(num2) << endl;
+    exit(EXIT_SUCCESS);
+}					       
+					       
+					       				       
+
+```
 
 
 
