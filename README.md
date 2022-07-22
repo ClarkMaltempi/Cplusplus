@@ -27,6 +27,13 @@ Recursivas | Projeto Teatro |Projeto Teatro v2 |
 
 # pre-requisitos
 
+```c++
+
+printf("teste");
+
+
+```
+
 
 
 # Inserindo-Valores
