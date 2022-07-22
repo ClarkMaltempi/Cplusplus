@@ -16,7 +16,6 @@ Pilha | Pilha Ligada | Probabilidade |
 Recursivas | Projeto Teatro |Projeto Teatro v2 |
 
 <a href="#sobre">Sobre</a></br>
-<a href="#pre-requisitos">Roadmap</a></br>
 <a href="#Inserindo-Valores">Inserir</a></br>
 <a href="#ENUM">Enum</a></br>
 <a href="#STRUCT">Struct</a></br>
@@ -25,6 +24,7 @@ Recursivas | Projeto Teatro |Projeto Teatro v2 |
 <a href="#PONTEIROS-ARRAY">Ponteiros-Array</a></br>
 <a href="#ALOCACAO-DINAMICA">Alocação-Dinamica</a></br>
 <a href="#RECURSIVAS">funções-Recursivas</a></br>
+<a href="#PiLHA-STACK">Pilha-Stack</a></br>
 
 # Sobre
 <p>Este repositorio contem mini projetos desenvolvidos para manipulação da linguagem c++</p>
@@ -472,18 +472,58 @@ int fibonacci(int n){
 	
 }
 
+```
+
+# PiLHA-STACK
+
+
+
+```c++
+
+
+////////////Pilha /Stack - Um tubo, o primeiro elemento inserido é o ultimo elemento a ser trabalhado, o ultimo elemento inserido é o primeiro a ser trabalhado
+
+/*
+		
+			| |
+			|_|
+*/
+
+
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+int main (){
+	
+		stack <string> cartas;
+		
+		cartas.push("Rei de copas"); // inserir elemento na pilha
+		cartas.push("Rei de Espadas");
+		cartas.push("Rei de Ouros");
+		cartas.push("Rei de Paus");
+		
+		cout << "Tamanho da pilha:" << cartas.size() << "\n";
+		
+		cout<<"Carta do topo: " << cartas.top() << "\n";
+		
+		cartas.pop(); // retira o elemento da pilha que está no topo
+		
+		cout << "Tamanho da pilha:" << cartas.size() << "\n";
+		
+		cout<<"Nova carta do Carta do topo: " << cartas.top() << "\n"; // Vert carta do topo
+		
+		
+		return 0;
+}
+
+
+
+
 
 
 ```
-
-
-
-
-
-
-
-
-
 
 
 
