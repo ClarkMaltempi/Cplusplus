@@ -31,6 +31,7 @@
 <a href="#PONTEIROS-INTELIGENTES">Ponteiros-Inteligentes</a></br>
 <a href="#FOREACH">Foreach</a></br>
 <a href="#XML">XML</a></br>
+<a href="#CONTAR-DIGITOS">Contar-Digitos</a></br>
 
 </br>
 </br>
@@ -1917,6 +1918,13 @@ public class Sample
 					       
 					       
 					       
+			    
+```
+
+# CONTAR-DIGITOS
+
+```c++
+
 //Contar numero de Dígitos
 			
 #include <iostream>
@@ -1938,11 +1946,8 @@ int main() {
     cout << "number of digits in " << num1 << " = " << countDigits(num1) << endl;
     cout << "number of digits in " << num2 << " = " << countDigits(num2) << endl;
     exit(EXIT_SUCCESS);
-}					       
-					       
-					       				       
+}		
+
 
 ```
-
-
 
