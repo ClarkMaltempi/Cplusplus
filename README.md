@@ -25,7 +25,16 @@ Recursivas | Projeto Teatro |Projeto Teatro v2 |
 <a href="#ALOCACAO-DINAMICA">Alocação-Dinamica</a></br>
 <a href="#RECURSIVAS">funções-Recursivas</a></br>
 <a href="#PiLHA-STACK">Pilha-Stack</a></br>
+<a href="#EMPT">EMPT</a></br>
+<a href="#FILAS-QUEUE">Filas-Queue</a></br>
+<a href="#POO">POO</a></br>
+<a href="#POO-CLASSES">POO-CLASSES</a></br>
+<a href="#GET-SET">GET-SET</a></br>
+<a href="#HERANCA">Herança</a></br>
 
+</br>
+</br>
+##
 # Sobre
 <p>Este repositorio contem mini projetos desenvolvidos para manipulação da linguagem c++</p>
 
@@ -481,7 +490,8 @@ int fibonacci(int n){
 ```c++
 
 
-////////////Pilha /Stack - Um tubo, o primeiro elemento inserido é o ultimo elemento a ser trabalhado, o ultimo elemento inserido é o primeiro a ser trabalhado
+//Pilha /Stack - Um tubo, o primeiro elemento inserido é o ultimo elemento a ser trabalhado, o ultimo elemento inserido 
+//é o primeiro a ser trabalhado
 
 /*
 		
@@ -519,8 +529,432 @@ int main (){
 }
 
 
+```
+
+# EMPT
 
 
+```c++
+
+//////Pilhas Método Empt
+
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+int main (){
+	
+		stack <string> cartas;
+		
+		if (cartas.empty()){ //empty retorna verdadeiro ou falso
+			
+			cout<< "Pilha vazia\n\n";
+			
+		}else{
+			
+			cout << "Pilha com cartas\n\n";
+			
+			
+		}
+		
+		//Pode ser usado o size também para verificar se existe elementos na pilha
+		
+		if (cartas.size()==0){ //empty retorna verdadeiro ou falso
+			
+			cout<< "Pilha vazia\n\n";
+			
+		}else{
+			
+			cout << "Pilha com cartas\n\n";
+			
+			
+		}
+		
+		//excluir elementos
+		while(!cartas.empty()){ // Enquanto cartas não for vazio
+			
+			cartas.pop();
+			
+		}
+		
+		cartas.push("Rei de copas"); // inserir elemento na pilha
+		cartas.push("Rei de Espadas");
+		cartas.push("Rei de Ouros");
+		cartas.push("Rei de Paus");
+		
+		cout << "Tamanho da pilha:" << cartas.size() << "\n";
+		
+		cout<<"Carta do topo: " << cartas.top() << "\n";
+		
+		cartas.pop(); // retira o elemento da pilha que está no topo
+		
+		cout << "Tamanho da pilha:" << cartas.size() << "\n";
+		
+		cout<<"Nova carta do Carta do topo: " << cartas.top() << "\n"; // Vert carta do topo
+		
+	
+		return 0;
+}
+
+
+
+```
+
+
+
+# FILAS-QUEUE
+
+
+```c++
+
+
+
+///Filas****** /Queue
+/*
+			 _    _	
+			  |  |
+			 _|  |_
+			
+*/			//Primeiro elemento que entra é o primeiro elemento que sai, ultimo a entrar ultimo a sair
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int main (){
+	
+	/*
+		empty
+		size
+		front -  Na frente da fila
+		back - 
+		push
+		pop
+	*/
+	
+	queue <string> cartas;
+		
+		cartas.push("Rei de copas"); // inserir elemento na pilha
+		cartas.push("Rei de Espadas");
+		cartas.push("Rei de Ouros");
+		cartas.push("Rei de Paus");
+		
+		cout << "Tamanho da fila:" << cartas.size() << "\n";
+		cout<< "Primeira Carta: " << cartas.front() << "\n";	
+		cout<< "Primeira Carta: " << cartas.back() << "\n\n";	
+		
+		
+		
+		//excluir elementos
+		while(!cartas.empty()){ // Enquanto cartas não for vazio
+		
+		
+			cout<< "Primeira Carta: " << cartas.front() << "\n";	
+			cartas.pop(); //sempre vai remover a carta que está na frente da fila	
+		}
+		
+	
+		return 0;
+}
+
+
+```
+
+# POO
+
+
+
+```c++
+
+///////////POO //// C++
+
+#include <iostream>
+
+using namespace std;
+
+
+class Aviao{
+
+	public:
+		int vel=0;
+		int velMax;
+		string tipo;
+		void ini(int tp); //Prototipar a Função, criando um metodo
+
+	private:
+
+};
+
+void Aviao::ini(int tp){//tipo 1=jato, 2 = monomotor 3=Planador
+
+	if(tp==1){
+		this->velMax = 800; //Para dizer que velmax pertence a classe avião usamos "this" (está)
+		this->tipo = "Jato";
+
+	}else if (tp==2){
+		this->velMax=350;
+		this->tipo="Monomotor";
+
+	}
+}
+
+int main (){
+
+
+		Aviao *av1=new Aviao(); //No c++ precisa definir o ponteiro, instancio o objeto dessa classe
+
+		av1->ini(1);
+
+		cout << av1->vel; // O "."  nesse exemplo av1.vel mostra uma propriedade do Objeto, mas no C++ precisamos alterar a sintaxe, no c++ é "->"
+
+		return 0;
+}
+
+```
+
+
+
+# POO-CLASSES
+
+
+```c++
+
+//POO, Classe em arquivo externo - Arquivo principal.cpp
+
+
+
+#include <iostream>
+#include "arquivo.h"
+
+using namespace std;
+
+
+	Aviao *av1=new Aviao(1);//Informa o tipo de avião, ou seja passando o parametro
+	Aviao *av2=new Aviao(3);
+	Aviao *av3=new Aviao(2);
+	
+	av1->imprimir();
+	av2->imprimir();
+
+
+
+//*************************************************Segundo arquivo.h
+//ou usar namespace std;
+class Aviao{
+
+	public:
+		int vel=0;
+		int velMax;
+		std::string tipo;
+		Aviao(int tp); //Prototipar a Função, criando um metodo
+		void imprimir();
+
+	private:
+
+};
+
+Aviao::Aviao(int tp){//tipo 1=jato, 2 = monomotor 3=Planador
+
+	if(tp==1){
+		velMax = 800; //Aqui não usamos o usamos "this" por causa da declaração do nome Aviao(int tp);
+		tipo = "Jato";
+
+	}else if (tp==2){
+		velMax=350;
+		tipo="Monomotor";
+		
+	}else if (tp==3){
+		velMax=180;
+		tipo="Planador";
+}
+
+
+
+void Aviao::imprimir(){
+	
+	std::cout<< "Tipo: " << tipo <<endl;
+	std::cout<< "Velocidade máxima: " << velMax <<endl;
+	
+}
+
+
+```
+
+
+
+# GET-SET
+
+
+
+```c++
+
+
+/////GET E SET******************************************************#46
+//TRABALHANDO COM PARAMETROS PRIVATE
+
+//ARquivo principal
+
+	Veiculo *v1=new Veiculo();
+	//v1->velMax=300; // Está dando erro por que o velMax é privado
+	cout<<v1->getVelMax();
+	cout<<v1->velMax;
+	
+	v1->setLigado(1);
+
+
+//Arquivo .harderr
+
+class Veiculo{
+
+	public:
+
+		int vel;
+		int tipo;	
+		Veiculo(int tp);//Método construtor é o método que é chamado quando instancio um objeto da classe
+		int getVelMax(); //Mesmo tipo da variável
+		bool getLigado();
+		void setLigado(int l);
+
+	private:
+		std::string nome;
+		int velMax;
+		bool ligado;
+		void setVelMax(int vm);
+};
+
+bool Veiculo::getLigado(){
+	return ligado;
+}
+
+void Veiculo::setLigado(int l){
+	if(l==1){
+		ligado=true;
+	}else if(l==0){
+		ligado=false;
+	}
+}
+
+int Veiculo::getVelMax(){
+	return VelMax;
+}
+
+void Veiculo::setVelMax(int vm){
+	velMax=vm;
+}
+
+Veiculo::Veiculo(int tp){//1 = Carro 2 = Aviao 3 = Navio
+	
+	tipo = tp;
+	if(tipo==1){
+		nome="Carro";
+		setvelMax(200);
+	}else if(tipo==2){
+		nome="Aviao";
+		setvelMax(800);
+	}if(tipo==3){
+		nome="Navio";
+		setvelMax(120);
+	}
+	
+	
+}
+
+
+```
+
+# HERANCA
+
+
+
+
+```c++
+
+//Arquivo Principal
+
+
+	Moto *v1=new Moto();
+	Carro *v2=new Carro();
+
+	cout<<v1->rodas;
+	v1->imp();
+
+
+
+//Classes Arquivo .harder
+
+
+class Veiculo{
+	
+	public:
+	
+		int vel;
+		int blind;
+		int rodas;
+		void setTipo(int tp);
+		void setVelMax(int vm);
+		void setArma(bool ar);
+		void imp();
+	
+	private:
+	
+		int tipo;
+		int velMax;
+		bool arma;
+};
+
+void Veiculo::imp(){
+	std::cout<<"Tipo Veículo:"<< tipo;
+}
+
+void Veiculo:setTipo(int tp){
+	tipo=tp;
+}
+	
+void Veiculo:setVelMax(int vm){
+	velMax=vm;
+}
+
+void Veiculo:setArma(bool ar){
+	arma=ar;
+}
+
+class Moto::public Veiculo{//Criando uma classe que herda os elemntos da classe veículo
+	
+	public:
+		moto();
+	
+	
+};
+
+Moto::Moto(){ //não foi declado os elementos
+	vel=0;
+	blind=0;
+	rodas=2;
+	setTipo(1);
+	setVelMax(120);
+	setArma(false);
+}
+
+
+class Carro::public Veiculo{//Criando uma classe que herda os elemntos da classe veículo
+	
+	public:
+		Carro();
+	
+	
+};
+
+Carro::Carro(){
+	
+	vel=0;
+	blind=0;
+	rodas=4;
+	setTipo(2);
+	setVelMax(120);
+	setArma(false);
+		
+}
 
 
 ```
