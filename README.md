@@ -18,10 +18,12 @@ Recursivas | Projeto Teatro |Projeto Teatro v2 |
 <a href="#sobre">Sobre</a></br>
 <a href="#pre-requisitos">Roadmap</a></br>
 <a href="#Inserindo-Valores">Inserir</a></br>
-
 <a href="#ENUM">Enum</a></br>
 <a href="#STRUCT">Struct</a></br>
 <a href="#STRUCT-ARRAY">Struct-ARRAY</a></br>
+<a href="#PONTEIROS">PONTEIROS</a></br>
+<a href="#PONTEIROS-ARRAY">PONTEIROS-ARRAY</a></br>
+
 
 # Sobre
 <p>Este repositorio contem mini projetos desenvolvidos para manipulação da linguagem c++</p>
@@ -277,6 +279,90 @@ int main (){
 
 ```
 
+# PONTEIROS
 
 
+<p>Não armazena o endereço de uma variavel, mas o endereço de outra variável, ele está apontando.</p>
+<p>Ponteiro tem que ser da mesma variável</p>
+
+<h2>Exemplo</h2>
+
+| End			|			Tipo			|		valor		|	nome|
+------------------------|-----------------------------------------------|-------------------------------|-------------------------|
+1000			|			int			|		4		|			num|
+
+```c++
+
+int *pn;         //criando  ponteiro
+pn=&num;     //Associei o endereço num com o ponteiro
+cout << pn;   //Endereço;
+cout << *pn;
+
+
+int main (){
+
+string veiculo="Carro";
+string *pv; // criou o endereço;
+
+pv=&veiculo; // Ponteiro PV recebe o endereço da variavel veículo
+
+cout << pv; //Endereço da memória Ram;
+cout << &veiculo;
+
+*pv="Moto";
+
+
+}
+
+
+```
+
+# PONTEIROS-ARRAY
+
+```c++
+
+// Manipulando Arrays e vetores
+
+
+int *p;
+int vet[10];
+
+p=vet; //atribuindo o primeiro elemento do vetor p=&vetor[0];
+
+p=&vetor[1];
+cout<< "\n" << p << "\n";
+
+*(p+=1);//incrementando 1 para o próxima posição
+*p=10; // 10 atribuído a primeira posição do vetor
+cout << "\n" << vetor[0]<<"\n";
+
+*(p+=1); //incrementando para a segunda posição
+*p=20;
+cout << "\n" << vetor[1] << "\n";
+
+
+
+void iniVetor (float *v);
+
+int main(){
+
+float vetor[5];
+iniVetor(vetor); // Não precisa especificar o endereço
+}
+
+for(int i=0; i<5; i++){
+
+	cout<< vetor[i] << "\n";
+}
+
+void iniVetor (float *v){
+	v[0]=0;
+	v[1]=0;
+	v[2]=0;
+	v[3]=0;
+	v[4]=0;
+}
+
+
+```
 
